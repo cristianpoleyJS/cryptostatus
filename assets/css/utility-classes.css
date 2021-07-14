@@ -1,0 +1,37 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.display-block {
+    display: block;
+}
+.display-inline-block {
+    display: inline-block;
+}
+.display-flex {
+    display: flex;
+}
+
+.display-grid {
+    display: grid;
+}
+
+.text-align-right {
+    text-align: right;
+}
+.text-align-left {
+    text-align: left;
+}
+.text-align-center {
+    text-align: center;
+}
+.text-uppercase {
+    text-transform: uppercase;
+}
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.w-100-percent {
+    width: 100%;
+}

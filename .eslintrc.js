@@ -14,6 +14,15 @@ module.exports = {
   ],
   plugins: [
   ],
-  // add your custom rules here
-  rules: {}
+  rules: {
+    'vue/html-closing-bracket-newline': [
+      'error',
+      {
+        singleline: 'never',
+        multiline: 'never'
+      }
+    ],
+    'vue/valid-v-html': 'off',
+    'vue/no-v-html': 'off'
+  }
 }

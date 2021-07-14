@@ -17,7 +17,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['assets/global.css'],
+  css: ['assets/css/global.css', 'assets/css/utility-classes.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -28,7 +28,10 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    'nuxt-vite'
+    'nuxt-vite',
+    ['@nuxtjs/eslint-module', {
+      fix: true
+    }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
