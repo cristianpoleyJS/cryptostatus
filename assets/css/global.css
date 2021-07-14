@@ -1,0 +1,79 @@
+@font-face {
+    font-family: "Graphik";
+    font-weight: 500;
+    src: local("Graphik"), url(../fonts/Graphik-Regular.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Graphik";
+    font-weight: 600;
+    src: local("Graphik"), url(../fonts/Graphik-Medium.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Graphik";
+    font-weight: 700;
+    src: local("Graphik"), url(../fonts/Graphik-Bold.ttf) format("truetype");
+}
+
+:root {
+    --base-typography-primary-font-family: Graphik;
+    --base-typography-text-font-weight-regular: 500;
+    --base-typography-text-font-weight-medium: 600;
+    --base-typography-text-font-weight-bold: 700;
+    --base-text-font-size: 1rem;
+
+    --white: #ffffff;
+    --main-color-app: rgb(5, 15, 25);
+    --second-color-app: #2d68ed;
+}
+
+* {
+    font-family: var(--base-typography-primary-font-family), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: var(--base-text-font-size);
+    font-weight: var(--base-typography-text-font-weight-regular);
+    box-sizing: border-box;
+    color: var(--main-color-app);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: none;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+a:visited {
+    color: pink;
+}
+
+
+  /** SCSS Para el scroll */
+*::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    border: 4px solid rgba(255, 255, 255, 0);
+    background-color: #bdbdbd;
+}
+
+*::-webkit-scrollbar-thumb:horizontal {
+    background: #bdbdbd;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    border-radius: 12px;
+    border: 4px solid rgba(255, 255, 255, 0);
+    background-clip: content-box;
+    background-color: #bdbdbd;
+}
+
+*::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
