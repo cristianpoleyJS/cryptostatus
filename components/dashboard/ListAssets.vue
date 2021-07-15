@@ -10,7 +10,7 @@
       <span class="text-align-center">Change 24hr</span>
       <span class="text-align-center">Action</span>
     </div>
-    <div>
+    <div v-if="!loading">
       <Asset
         v-for="(asset, ix) in assets"
         :key="asset.id"
@@ -19,6 +19,9 @@
           index: ix
         }" />
     </div>
+    <div v-else>
+      <SkeletonPlaceholderListAssets :length="20" />
+    </div>
     <button @click="$emit('see-more')">
       See more
     </button>
@@ -26,16 +29,22 @@
 </template>
 
 <script>
+import SkeletonPlaceholderListAssets from '@/components/dashboard/SkeletonPlaceholderListAssets'
 import Asset from '@/components/dashboard/Asset'
 
 export default {
   components: {
+    SkeletonPlaceholderListAssets,
     Asset
   },
   props: {
     assets: {
       type: Array,
       required: true
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   }
 }
