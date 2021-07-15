@@ -24,6 +24,11 @@
       padding: 2rem;
       max-height: calc(100vh - 64px);
       overflow-y: auto;
+      max-width: calc(100% - 4rem);
+      background-color: var(--white);
+      border-radius: 3px;
+      padding: 2rem;
+      margin: 2rem;
     }
 
     @media (max-width: 1024px) {

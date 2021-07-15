@@ -1,9 +1,9 @@
 export const formatCurrency = (price) => {
-  const currency = process.server ? '' : (!!localStorage.getItem('cryptonine-currency') || 'EUR')
+  const currency = process.server ? '' : (!!localStorage.getItem('cryptoNineCurrency') || 'eur')
   const formatter = new Intl.NumberFormat(navigator.language || navigator.userLanguage, {
     style: 'currency',
-    currency
+    currency: 'USD'
   })
 
-  return formatter.format(currency === 'EUR' ? price * 0.89 : price)
+  return formatter.format(currency === 'eur' ? price * 0.89 : price)
 }

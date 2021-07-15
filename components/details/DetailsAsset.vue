@@ -1,17 +1,13 @@
 <template>
   <section class="details-asset">
     <div class="details-asset-header">
-      <img :src="`https://www.blockchain.com/static/img/prices/prices-${asset.symbol.toLowerCase()}.svg`">
+      <CoinIcon :coin-id="asset.id" />
       <span>
         <span class="title">{{ asset.name }}</span>
         <span class="symbol">{{ asset.symbol }}</span>
         <Price :price="asset.priceUsd" />
       </span>
-      <span
-        class="favorite text-align-center"
-        @click.stop.prevent="addToFavorite">
-        <i class="display-inline-block cursor-pointer" />
-      </span>
+      <Favorite :coin-id="asset.id" />
     </div>
 
     <DetailsChart :asset="asset" />
@@ -20,11 +16,15 @@
 
 <script>
 import DetailsChart from '@/components/details/DetailsChart'
+import Favorite from '@/components/common/Favorite'
+import CoinIcon from '@/components/common/CoinIcon'
 import Price from '@/components/common/Price'
 
 export default {
   components: {
     DetailsChart,
+    Favorite,
+    CoinIcon,
     Price
   },
   props: {
@@ -47,10 +47,9 @@ export default {
   }
 
   .details-asset-header {
-    display: grid;
+    display: flex;
     align-items: center;
     grid-gap: 1rem;
-    grid-template-columns: 40px calc(50% - 40px) calc(50% - 40px);
     width: 100%;
     font-size: 32px;
   }

@@ -1,30 +1,27 @@
 <template>
-  <DetailsAsset :asset="asset" />
+  <SkeletonPlaceholderDetails v-if="loading" />
+  <DetailsAsset
+    v-else
+    :asset="$store.getters.getAssetSelected" />
 </template>
 
 <script>
+import SkeletonPlaceholderDetails from '@/components/details/SkeletonPlaceholderDetails'
 import DetailsAsset from '@/components/details/DetailsAsset'
-import { getAssetById, openWatchPrices } from '@/api'
 
 export default {
   components: {
+    SkeletonPlaceholderDetails,
     DetailsAsset
   },
-  async asyncData ({ params }) {
-    const id = params.id
-    const response = await getAssetById(id)
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error(`The ID "${id}" is not valid`)
-      } else {
-        throw new Error('Internal Server Error')
-      }
-    } else {
-      const { data } = await response.json()
-      return { asset: data, watchPrice: openWatchPrices(id), id }
+  data () {
+    return {
+      loading: true
     }
   },
-  // call fetch only on client-side
-  fetchOnServer: false
+  async beforeMount () {
+    await this.$store.dispatch('actionGetAssetById', this.$route.params.id)
+    this.loading = false
+  }
 }
 </script>

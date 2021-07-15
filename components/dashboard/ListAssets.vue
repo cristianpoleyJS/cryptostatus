@@ -1,7 +1,9 @@
 <template>
   <section>
-    <h2 class="display-flex">
+    <h2>
       Assets
+
+      <InputSearch v-model="inputSearch" />
     </h2>
     <div class="display-grid list-assets-header">
       <span>#</span>
@@ -11,30 +13,35 @@
       <span class="text-align-center">Action</span>
     </div>
     <div v-if="!loading">
-      <Asset
-        v-for="(asset, ix) in assets"
-        :key="asset.id"
-        :asset="{
-          ...asset,
-          index: ix
-        }" />
+      <template v-if="assetsFiltered.length">
+        <Asset
+          v-for="(asset, ix) in assetsFiltered"
+          :key="asset.id"
+          :asset="{
+            ...asset,
+            index: ix
+          }" />
+      </template>
+      <span v-else class="empty-no-results">No results</span>
     </div>
     <div v-else>
       <SkeletonPlaceholderListAssets :length="20" />
     </div>
     <button @click="$emit('see-more')">
-      See more
+      See more <img src="@/assets/images/ico-see-more.svg">
     </button>
   </section>
 </template>
 
 <script>
 import SkeletonPlaceholderListAssets from '@/components/dashboard/SkeletonPlaceholderListAssets'
+import InputSearch from '@/components/common/InputSearch'
 import Asset from '@/components/dashboard/Asset'
 
 export default {
   components: {
     SkeletonPlaceholderListAssets,
+    InputSearch,
     Asset
   },
   props: {
@@ -45,6 +52,20 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    }
+  },
+  data () {
+    return {
+      inputSearch: ''
+    }
+  },
+  computed: {
+
+    assetsFiltered () {
+      return this.assets.filter((asset) => {
+        return asset.id.includes(this.inputSearch) ||
+              asset.symbol.includes(this.inputSearch)
+      })
     }
   }
 }
@@ -61,8 +82,10 @@ export default {
     h2 {
         padding: 0 2rem;
         height: 54px;
-        flex-direction: row;
         align-items: center;
+        display: flex;
+        justify-content: space-between;
+        grid-template-columns: 20fr 80fr;
         font-size: 18px;
         font-weight: var(--base-typography-text-font-weight-medium);
     }
@@ -76,12 +99,39 @@ export default {
         align-items: center;
         padding: 0 2rem;
         height: 54px;
-        grid-template-columns: 5fr 35fr 25fr 25fr 10fr;
+        grid-template-columns: 5fr 40fr 20fr 25fr 10fr;
         background-color: #fafcfe;
         overflow-x: auto;
     }
     section div.list-assets-header span {
         font-weight: var(--base-typography-text-font-weight-medium);
         color: #96a0b4;
+    }
+
+    .empty-no-results {
+      font-style: italic;
+      display: flex;
+      justify-content: center;
+      height: 56px;
+      align-items: center;
+    }
+
+    button {
+      width: 100%;
+      height: 56px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      justify-content: center;
+      background-color: var(--white);
+      color: var(--second-color-app);
+    }
+    button img {
+      width: 14px;
+      margin-left: 1rem;
+    }
+    button:hover {
+      background-color: rgb(236, 245, 254);
     }
 </style>

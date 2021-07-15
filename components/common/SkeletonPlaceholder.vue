@@ -8,7 +8,7 @@
     class="skeleton-placeholder-variant-circle"
     :style="`width: ${width}px; height: ${height}px`" />
   <span
-    v-else
+    v-else-if="variant === 'rect'"
     class="skeleton-placeholder-variant-rect"
     :style="`width: ${width}px; height: ${height}px`" />
 </template>
@@ -40,16 +40,8 @@ export default {
         position: relative;
         overflow: hidden;
         background: #ccc;
+        display: inline-block;
     }
-    @keyframes progress {
-        0% {
-            transform: translate3d(-100%, 0, 0);
-        }
-        100% {
-            transform: translate3d(100%, 0, 0);
-        }
-    }
-
     span::after {
         content: '';
         position: absolute;
@@ -60,13 +52,19 @@ export default {
         background: linear-gradient(90deg, #ccc, #eae9e9, #ccc);
         animation: progress 1s ease-in-out infinite;
     }
-    .skeleton-placeholder-variant-text {
+    .skeleton-placeholder-variant-text,
+    .skeleton-placeholder-variant-rect {
         border-radius: 4px;
     }
     .skeleton-placeholder-variant-circle {
         border-radius: 100px;
     }
-    .skeleton-placeholder-variant-rect {
-        border-radius: 4px;
+    @keyframes progress {
+        0% {
+            transform: translate3d(-100%, 0, 0);
+        }
+        100% {
+            transform: translate3d(100%, 0, 0);
+        }
     }
 </style>
