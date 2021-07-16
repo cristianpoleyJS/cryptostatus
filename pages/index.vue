@@ -1,28 +1,44 @@
 <template>
   <section>
     <ListAssets
-      :assets="assets"
-      @see-more="seeMore()"/>
+      :loading="loading"
+      :assets="$store.getters.getAssets"
+      @see-more="seeMore()" />
   </section>
 </template>
 
 <script>
 import ListAssets from '@/components/dashboard/ListAssets'
-import { getAssets } from '@/api'
 
 export default {
   components: {
     ListAssets
   },
-  async asyncData() {
-    const response = await getAssets()
-    const { data } = await response.json()
-    return { assets: data }
+  data () {
+    return {
+      loading: true,
+      limit: 20,
+      offset: 0
+    }
+  },
+  async beforeMount () {
+    await this.dispatchActionGetAssets()
+    this.loading = false
   },
   methods: {
 
+    async dispatchActionGetAssets () {
+      await this.$store.dispatch('actionGetAssets', { offset: this.offset })
+    },
+
     seeMore () {
-      console.log('entro')
+      this.offset += this.limit
+      this.dispatchActionGetAssets()
+    },
+
+    openAsset () {
+      this.limit = 20
+      this.offset = 0
     }
   }
 }

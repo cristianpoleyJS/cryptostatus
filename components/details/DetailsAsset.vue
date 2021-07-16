@@ -1,30 +1,47 @@
 <template>
   <section class="details-asset">
     <div class="details-asset-header">
-      <img :src="`https://www.blockchain.com/static/img/prices/prices-${asset.symbol.toLowerCase()}.svg`">
+      <CoinIcon :coin-id="asset.id" />
       <span>
         <span class="title">{{ asset.name }}</span>
         <span class="symbol">{{ asset.symbol }}</span>
-        <Price :price="asset.priceUsd" />
+        <Price :price="asset.price[$store.getters.getCurrency]" />
       </span>
-      <span
-        class="favorite text-align-center"
-        @click.stop.prevent="addToFavorite">
-        <i class="display-inline-block cursor-pointer" />
-      </span>
+      <ChangePercent :percent="asset.changePercent24Hr" />
+      <Favorite
+        :asset-clicked="asset"
+        :is-favorite="asset.favorite" />
     </div>
 
-    <DetailsChart :asset="asset" />
+    <TabsHours
+      :tab-selected="tabSelected"
+      @select-tab="$e => tabSelected = $e" />
+    <Chart
+      :asset="asset"
+      :tab="tabSelected" />
+    <ExtraInfo :asset="asset" />
   </section>
 </template>
 
 <script>
-import DetailsChart from '@/components/details/DetailsChart'
+import ChangePercent from '@/components/common/ChangePercent'
+import TabsHours from '@/components/details/TabsHours'
+import ExtraInfo from '@/components/details/ExtraInfo'
+import Favorite from '@/components/common/Favorite'
+import CoinIcon from '@/components/common/CoinIcon'
+import Chart from '@/components/details/Chart'
 import Price from '@/components/common/Price'
+
+import { TAB_ALL } from '@/utils/constants'
 
 export default {
   components: {
-    DetailsChart,
+    ChangePercent,
+    ExtraInfo,
+    TabsHours,
+    Favorite,
+    CoinIcon,
+    Chart,
     Price
   },
   props: {
@@ -33,9 +50,9 @@ export default {
       required: true
     }
   },
-  methods: {
-    addToFavorite () {
-      return ''
+  data () {
+    return {
+      tabSelected: TAB_ALL
     }
   }
 }
@@ -44,13 +61,17 @@ export default {
   .details-asset {
     display: block;
     width: 100%;
+    max-width: calc(100% - 4rem);
+    background-color: var(--white);
+    border-radius: 3px;
+    padding: 2rem;
+    margin: 2rem 0 0 2rem;
   }
 
   .details-asset-header {
-    display: grid;
+    display: flex;
     align-items: center;
     grid-gap: 1rem;
-    grid-template-columns: 40px calc(50% - 40px) calc(50% - 40px);
     width: 100%;
     font-size: 32px;
   }

@@ -8,13 +8,13 @@ import { formatCurrency } from '@/utils'
 export default {
   props: {
     price: {
-      type: String,
+      type: Number,
       required: true
     }
   },
   methods: {
     format (price) {
-      return formatCurrency(price)
+      return formatCurrency(price, this.$store.getters.getCurrency)
     }
   }
 }
