@@ -29,11 +29,11 @@ export default {
 <style scoped>
     span {
         white-space: nowrap;
-        border-radius: 8px;
+        border-radius: var(--border-radius-8);
         padding: 8px 10px;
         font-size: 14px;
         width: 74px;
-        font-weight: 600;
+        font-weight: var(--font-weight-medium);
         color: var(--white);
         display: inline-block;
     }

@@ -54,10 +54,10 @@ export default {
     }
     .skeleton-placeholder-variant-text,
     .skeleton-placeholder-variant-rect {
-        border-radius: 4px;
+        border-radius: var(--border-radius-4);
     }
     .skeleton-placeholder-variant-circle {
-        border-radius: 100px;
+        border-radius: var(--border-radius-100);
     }
     @keyframes progress {
         0% {

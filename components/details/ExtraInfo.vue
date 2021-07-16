@@ -6,7 +6,7 @@
             </label>
             <span>{{ format(asset.marketCap[$store.getters.getCurrency]) }}</span>
         </div>
-        <div v-if="asset.volumeUsd24Hr">
+        <div v-if="asset.volume24Hr">
             <label class="display-block">
                 Volumén en 24 horas:
             </label>
@@ -53,13 +53,13 @@ export default {
     }
 
     label {
-        font-weight: 600;
+        font-weight: var(--font-weight-medium);
         margin-bottom: 8px;
     }
 
     a {
-        color: var(--second-color-app);
-        font-weight: var(--base-typography-text-font-weight-medium);
+        color: var(--second-text-color);
+        font-weight: var(--font-weight-medium);
     }
     a > img {
         vertical-align: baseline;

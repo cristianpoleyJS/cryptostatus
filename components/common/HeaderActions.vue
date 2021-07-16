@@ -64,7 +64,7 @@ export default {
 
 <style scoped>
     div {
-        border-left: 1px solid #eef1f4;
+        border-left: 1px solid var(--border-general-color);
         height: 100%;
         display: flex;
         align-items: center;
@@ -72,15 +72,10 @@ export default {
     }
 
     span {
-        background-color: #fafcfe;
+        background-color: var(--bg-header-actions);
         padding: 12px;
-        border-radius: 3px;
+        border-radius: var(--border-radius-3);
         cursor: pointer;
-        transition: background-color 0.2s;
-    }
-
-    span:hover {
-        background-color: rgb(236, 245, 254);
     }
 
     i {

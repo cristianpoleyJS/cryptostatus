@@ -26,6 +26,6 @@ export default {
         display: inline-block;
         background-position: center;
         background-size: cover;
-        border-radius: 100%;
+        border-radius: var(--border-radius-100-percent);
     }
 </style>

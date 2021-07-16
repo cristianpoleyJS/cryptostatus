@@ -16,10 +16,6 @@
       grid-template-columns: 300px calc(100% - 300px);
     }
 
-    div {
-      background-color: #f8f9fd;
-    }
-
     .router-view {
       padding: 2rem;
       max-height: calc(100vh - 66px);

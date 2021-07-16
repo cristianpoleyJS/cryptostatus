@@ -77,7 +77,7 @@ export default {
 <style scoped>
 
     section {
-        background-color: var(--white);
+        background-color: var(--bg-list-assets);
         max-width: 1200px;
         overflow-x: auto;
     }
@@ -90,25 +90,25 @@ export default {
         justify-content: space-between;
         grid-template-columns: 20fr 80fr;
         font-size: 18px;
-        font-weight: var(--base-typography-text-font-weight-medium);
+        font-weight: var(--font-weight-medium);
     }
     section div {
         min-width: 600px;
     }
 
     section div.list-assets-header {
-        border-top: 1px solid #eef1f4;
-        border-bottom: 1px solid #eef1f4;
+        border-top: 1px solid var(--border-general-color);
+        border-bottom: 1px solid var(--border-general-color);
         align-items: center;
         padding: 0 2rem;
         height: 54px;
         grid-template-columns: 5fr 50fr 20fr 15fr 10fr;
-        background-color: #fafcfe;
+        background-color: var(--bg-list-header);
         overflow-x: auto;
     }
     section div.list-assets-header span {
-        font-weight: var(--base-typography-text-font-weight-medium);
-        color: #96a0b4;
+        font-weight: var(--font-weight-medium);
+        color: var(--third-text-color);
     }
 
     .empty-no-results {
@@ -125,16 +125,16 @@ export default {
       cursor: pointer;
       display: flex;
       align-items: center;
-      font-weight: 600;
+      font-weight: var(--font-weight-medium);
       justify-content: center;
-      background-color: var(--white);
-      color: var(--second-color-app);
+      background-color: var(--bg-list-assets);
+      color: var(--second-text-color);
     }
     button img {
       width: 14px;
       margin-left: 1rem;
     }
     button:hover {
-      background-color: rgb(236, 245, 254);
+      background-color: var(--bg-list-asset-hover);
     }
 </style>

@@ -40,10 +40,10 @@ export default {
         margin-top: 1rem;
         max-width: 300px;
         max-width: fit-content;
-        background: #323546;
+        background-color: var(--bg-tabs);
         align-items: center;
         height: 36px;
-        border-radius: 3px;
+        border-radius: var(--border-radius-3);
         padding: 0 10px;
     }
 
@@ -51,16 +51,13 @@ export default {
         padding: 7px 8px;
         white-space: nowrap;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: var(--font-weight-medium);
         cursor: pointer;
-        color: rgb(255, 255, 255);
-        background: #323546;
-        border-radius: 3px;
+        border-radius: var(--border-radius-3);
     }
 
     li.selected {
-        background: #161924;
-        box-shadow: rgb(50 53 70) 0px 1px 0px;
-        font-weight: 600;
+        background: var(--bg-tabs-items);
+        font-weight: var(--font-weight-medium);
     }
 </style>

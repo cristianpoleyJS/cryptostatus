@@ -30,7 +30,7 @@ export default {
 
   a {
     display: grid;
-    border-bottom: 1px solid #eef1f4;
+    border-bottom: 1px solid var(--border-general-color);
     align-items: center;
     padding: 0 2rem;
     height: 54px;

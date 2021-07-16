@@ -62,8 +62,8 @@ export default {
     display: block;
     width: 100%;
     max-width: calc(100% - 4rem);
-    background-color: var(--white);
-    border-radius: 3px;
+    background-color: var(--bg-details-asset);
+    border-radius: var(--border-radius-3);
     padding: 2rem;
     margin: 2rem 0 0 2rem;
   }
@@ -76,15 +76,10 @@ export default {
     font-size: 32px;
   }
 
-  .details-asset-header .title {
-    color: rgb(18, 29, 51);
-    font-weight: 500;
-  }
-
   .details-asset-header .symbol {
     margin: 0 1.5rem 0 0.5rem;
-    color: rgb(152, 161, 178);
-    font-weight: 600;
+    color: var(--third-text-color);
+    font-weight: var(--font-weight-medium);
   }
 
   img {

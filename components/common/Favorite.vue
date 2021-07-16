@@ -30,7 +30,7 @@ export default {
 
 <style>
   .favorite i {
-    background-image: url("../../assets/images/ico-favorite.svg");
+    background-image: var(--bg-icon-action-favorite);
     background-size: cover;
     width: 20px;
     height: 20px;

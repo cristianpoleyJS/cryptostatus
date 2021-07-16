@@ -49,9 +49,9 @@ export default {
 <style scoped>
     span {
         height: 38px;
-        background: #f6f6f6;
+        background-color: var(--bg-input-search);
         box-sizing: border-box;
-        border-radius: 3px;
+        border-radius: var(--border-radius-3);
         padding: 0 1rem;
         display: flex;
         align-items: center;
@@ -66,7 +66,6 @@ export default {
         width: 100%;
         outline: none;
         font-size: 14px;
-        font-weight: 400;
         letter-spacing: 0;
         text-align: left;
         margin-right: 8px;
@@ -80,7 +79,7 @@ export default {
     }
 
     span.focusing {
-        box-shadow: inset 0 0 0 1px #eef1f4;
+        box-shadow: inset 0 0 0 1px var(--border-input-search);
     }
 
     i {
