@@ -24,6 +24,9 @@
     --second-text-color: #2d68ed;
     --third-text-color: #96a0b4;
     --white: #fff;
+    --color-negative-change: #ea3943;
+    --color-positive-change: #16c784;
+    --color-input-search-placeholder: #9caab9;
 
     --border-radius-3: 3px;
     --border-radius-4: 4px;
@@ -32,6 +35,8 @@
     --border-radius-12: 12px;
     --border-radius-100: 100px;
     --border-radius-100-percent: 100%;
+
+    --grid-template-columns-list: 5fr 50fr 20fr 15fr 10fr;
 }
 
 body.light {
@@ -51,7 +56,8 @@ body.light {
     --bg-header-actions: #f6f6f6;
 
     --bg-image-logo: url("../../assets/images/logo-light.svg");
-    --bg-icon-action-favorite: url("../../assets/images/ico-favorite-light.svg");
+    --bg-ico-action-favorite: url("../../assets/images/ico-favorite-light.svg");
+    --bg-ico-theme: url('../../assets/images/ico-theme-light.svg');
 
     --border-general-color: #eef1f4;
     --border-input-search: #eef1f4;
@@ -74,7 +80,8 @@ body.dark {
     --bg-header-actions: #323546;
 
     --bg-image-logo: url("../../assets/images/logo-dark.svg");
-    --bg-icon-action-favorite: url("../../assets/images/ico-favorite-dark.svg");
+    --bg-ico-action-favorite: url("../../assets/images/ico-favorite-dark.svg");
+    --bg-ico-theme: url('../../assets/images/ico-theme-dark.svg');
 
     --border-general-color: #20232d;
     --border-input-search: rgb(36 41 52);

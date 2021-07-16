@@ -1,22 +1,22 @@
 <template>
   <section class="app-sidebar">
-    <span class="app-sidebar-logo">
+    <span class="app-sidebar-logo display-flex align-items-center">
       <nuxt-link :to="'/'" class="cursor-pointer w-100-percent">
-        <i class="display-block" />
+        <i class="display-block bg-size-cover" />
       </nuxt-link>
     </span>
 
     <nav>
-      <span>MAIN MENU</span>
+      <span class="text-xs">MAIN MENU</span>
       <ul>
         <li>
-          <nuxt-link :to="'/'" class="cursor-pointer">
+          <nuxt-link :to="'/'" class="display-flex align-items-center">
             <img src="@/assets/images/ico-home.svg">
             <span>Dashboard</span>
           </nuxt-link>
         </li>
         <li>
-          <nuxt-link :to="'/favorites'" class="cursor-pointer">
+          <nuxt-link :to="'/favorites'" class="display-flex align-items-center">
             <img src="@/assets/images/ico-favorite-blue.svg">
             <span>My favorites</span>
           </nuxt-link>
@@ -35,14 +35,11 @@
 .app-sidebar-logo {
   border-bottom: 1px solid var(--border-general-color);
   height: 4rem;
-  display: flex;
-  align-items: center;
   padding-left: 2rem;
 }
 
 .app-sidebar-logo i {
   background-image: var(--bg-image-logo);
-  background-size: cover;
   width: 200px;
   height: 26px;
 }
@@ -52,7 +49,6 @@ nav {
 }
 nav > span {
   color: var(--third-text-color);
-  font-size: 12px;
   padding: 0 2rem;
 }
 
@@ -61,8 +57,6 @@ nav a {
   margin: 0 1rem;
   height: 40px;
   margin-top: 1rem;
-  display: flex;
-  align-items: center;
   border-radius: var(--border-radius-10);
 }
 

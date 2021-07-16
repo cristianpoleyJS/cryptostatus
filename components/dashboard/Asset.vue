@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     :to="`/price/${asset.id}`"
-    class="asset display-grid cursor-pointer">
+    class="asset display-grid cursor-pointer align-items-center">
     <span>{{ asset.rank }}</span>
     <span>
       <CoinIcon :coin-id="asset.id" :style-component="'width: 24px; margin-right: 1rem;'" />
@@ -43,10 +43,9 @@ export default {
 <style scoped>
   .asset {
     border-bottom: 1px solid var(--border-general-color);
-    align-items: center;
     padding: 0 2rem;
     height: 54px;
-    grid-template-columns: 5fr 50fr 20fr 15fr 10fr;
+    grid-template-columns: var(--grid-template-columns-list);
   }
 
   .asset:hover {

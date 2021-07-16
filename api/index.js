@@ -18,7 +18,7 @@ export const getAssetById = (id) => {
   return fetch(`${API_URL}/assets/${id}`, REQUEST_OPTIONS)
 }
 
-export const getAssetHistoryById = (id, interval = 'd1', start = 1528470720000, end = new Date().getTime()) => {
+export const getAssetHistoryById = ({ id, interval = 'd1', start = 1528470720000, end = new Date().getTime() }) => {
   return fetch(`${API_URL}/assets/${id}/history?interval=${interval}&start=${start}&end=${end}`, REQUEST_OPTIONS)
 }
 

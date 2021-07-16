@@ -1,12 +1,13 @@
 <template>
   <div>
-      <ul>
+      <ul class="display-flex justify-start align-items-center">
             <li
                 v-for="(tab, ix) in tabs"
                 :key="ix"
                 :class="{
                     'selected': tab === tabSelected
                 }"
+                class="cursor-pointer text-2xs"
                 @click="$emit('select-tab', tab)">
                     {{ tab }}
             </li>
@@ -34,14 +35,11 @@ export default {
 
 <style scoped>
     ul {
-        display: flex;
-        justify-content: start;
         grid-gap: 1rem;
         margin-top: 1rem;
         max-width: 300px;
         max-width: fit-content;
         background-color: var(--bg-tabs);
-        align-items: center;
         height: 36px;
         border-radius: var(--border-radius-3);
         padding: 0 10px;
@@ -50,9 +48,7 @@ export default {
     li {
         padding: 7px 8px;
         white-space: nowrap;
-        font-size: 14px;
         font-weight: var(--font-weight-medium);
-        cursor: pointer;
         border-radius: var(--border-radius-3);
     }
 

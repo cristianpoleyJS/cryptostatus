@@ -1,14 +1,14 @@
 <template>
-    <div class="extra-info">
+    <div class="extra-info display-grid">
         <div>
             <label class="display-block">
-                Capitalización bursátil:
+                Market capitalization:
             </label>
             <span>{{ format(asset.marketCap[$store.getters.getCurrency]) }}</span>
         </div>
         <div v-if="asset.volume24Hr">
             <label class="display-block">
-                Volumén en 24 horas:
+                Volume in 24 hours:
             </label>
             <span>{{ format(asset.volume24Hr[$store.getters.getCurrency]) }}</span>
         </div>
@@ -46,7 +46,6 @@ export default {
 <style scoped>
     .extra-info {
         margin-top: 2rem;
-        display: grid;
         grid-template-columns: 50fr 50fr;
         grid-gap: 1rem 2rem;
         max-width: 800px;

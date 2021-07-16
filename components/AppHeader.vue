@@ -1,12 +1,12 @@
 <template>
   <section>
-      <div class="app-header-wrapper display-grid">
+      <div class="app-header-wrapper display-grid align-items-center justify-center">
         <p class="app-header-welcome">
-            <span class="title">Hi!</span>
-            <span class="description display-block">Welcome back!</span>
+            <span class="title text-2xs">Hi!</span>
+            <span class="description display-block text-2xs">Welcome back!</span>
         </p>
         <HeaderActions />
-        <p class="app-header-avatar">
+        <p class="app-header-avatar h-full text-align-center display-flex justify-center align-items-center">
             <AvatarUser />
         </p>
       </div>
@@ -35,27 +35,18 @@ export default {
 
     .app-header-wrapper {
         height: 4rem;
-        align-items: center;
         grid-template-columns: 70fr 15fr 15fr;
         max-width: 1356px;
-        justify-content: center;
     }
 
     .app-header-welcome .title {
         font-weight: var(--font-weight-medium);
         color: var(--main-text-color);
-        font-size: 14px;
     }
     .app-header-welcome .description {
-        font-size: 14px;
         color: var(--third-text-color);
     }
     .app-header-avatar {
-        text-align: center;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         border-left: 1px solid var(--border-general-color);
     }
     @media (max-width: 460px) {

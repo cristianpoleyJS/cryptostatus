@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <div>
+  <section class="w-full">
+    <div class="display-flex align-items-center w-full">
       <SkeletonPlaceholder variant="circle" :width="30" :height="30" />
       <SkeletonPlaceholder variant="text" :width="120" />
       <SkeletonPlaceholder variant="text" :width="40" />
@@ -22,16 +22,8 @@ export default {
 </script>
 
 <style scoped>
-  section {
-    display: block;
-    width: 100%;
-  }
-
   div {
-    display: flex;
-    align-items: center;
     grid-gap: 1rem;
-    width: 100%;
     margin-bottom: 2rem;
   }
 </style>

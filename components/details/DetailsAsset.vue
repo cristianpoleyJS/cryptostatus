@@ -1,6 +1,6 @@
 <template>
-  <section class="details-asset">
-    <div class="details-asset-header">
+  <section class="details-asset w-full display-block">
+    <div class="details-asset-header display-flex align-items-center w-full text-2xl">
       <CoinIcon :coin-id="asset.id" />
       <span>
         <span class="title">{{ asset.name }}</span>
@@ -59,8 +59,6 @@ export default {
 </script>
 <style scoped>
   .details-asset {
-    display: block;
-    width: 100%;
     max-width: calc(100% - 4rem);
     background-color: var(--bg-details-asset);
     border-radius: var(--border-radius-3);
@@ -69,11 +67,7 @@ export default {
   }
 
   .details-asset-header {
-    display: flex;
-    align-items: center;
     grid-gap: 1rem;
-    width: 100%;
-    font-size: 32px;
   }
 
   .details-asset-header .symbol {
