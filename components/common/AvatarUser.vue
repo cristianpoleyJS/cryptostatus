@@ -1,5 +1,6 @@
 <template>
   <img
+    class="display-inline-block bg-size-cover vertical-align-middle bg-position-center w-full"
     src="@/assets/images/avatar.svg"
     :style="{...styleProp}"
     @click="$emit('click')">
@@ -19,13 +20,8 @@ export default {
 <style scoped>
 
     img {
-        width: 100%;
         width: 40px;
         height: 40px;
-        vertical-align: middle;
-        display: inline-block;
-        background-position: center;
-        background-size: cover;
-        border-radius: 100%;
+        border-radius: var(--border-radius-100-percent);
     }
 </style>

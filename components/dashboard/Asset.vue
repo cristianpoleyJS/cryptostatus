@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     :to="`/price/${asset.id}`"
-    class="asset display-grid cursor-pointer">
+    class="asset display-grid cursor-pointer align-items-center">
     <span>{{ asset.rank }}</span>
     <span>
       <CoinIcon :coin-id="asset.id" :style-component="'width: 24px; margin-right: 1rem;'" />
@@ -42,25 +42,23 @@ export default {
 
 <style scoped>
   .asset {
-    border-bottom: 1px solid #eef1f4;
-    align-items: center;
+    border-bottom: 1px solid var(--border-general-color);
     padding: 0 2rem;
     height: 54px;
-    grid-template-columns: 5fr 50fr 20fr 15fr 10fr;
-    transition: background-color 0.2s;
+    grid-template-columns: var(--grid-template-columns-list);
   }
 
   .asset:hover {
-    background-color: rgb(236, 245, 254);
+    background-color: var(--bg-list-asset-hover);
   }
 
   .asset span {
-    font-weight: var(--base-typography-text-font-weight-medium);
+    font-weight: var(--font-weight-medium);
   }
 
   .symbol {
-    color: #a2a9b9;
+    color: var(--third-text-color);
     margin-left: 1rem;
-    font-weight: var(--base-typography-text-font-weight-regular);
+    font-weight: var(--font-weight-regular);
   }
 </style>

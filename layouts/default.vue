@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="display-grid">
     <AppSidebar />
 
     <div>
@@ -11,13 +11,8 @@
 
 <style scoped>
     main {
-      display: grid;
       height: 100vh;
       grid-template-columns: 300px calc(100% - 300px);
-    }
-
-    div {
-      background-color: #f8f9fd;
     }
 
     .router-view {

@@ -1,10 +1,5 @@
 <template>
-    <span
-      class="text-align-center"
-      :class="{
-          'negative': percent <= 0,
-          'positive': percent > 0
-      }">
+    <span :class="`text-align-center display-inline-block text-2xs ${percent > 0 ? 'positive' : 'negative'}`">
       {{ format(percent) }}
     </span>
 </template>
@@ -29,20 +24,18 @@ export default {
 <style scoped>
     span {
         white-space: nowrap;
-        border-radius: 8px;
+        border-radius: var(--border-radius-8);
         padding: 8px 10px;
-        font-size: 14px;
         width: 74px;
-        font-weight: 600;
+        font-weight: var(--font-weight-medium);
         color: var(--white);
-        display: inline-block;
     }
 
     span.negative {
-        background-color: #ea3943;
+        background-color: var(--color-negative-change);
     }
 
     span.positive {
-        background-color: #16c784;
+        background-color: var(--color-positive-change);
     }
 </style>

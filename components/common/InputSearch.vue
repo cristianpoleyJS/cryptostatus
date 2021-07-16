@@ -1,11 +1,12 @@
 <template>
     <span
-        class="input-search-wrapper"
+        class="input-search-wrapper display-flex align-items-center"
         :class="{
             'focusing': focusing
         }">
-        <i class="ico-search" />
+        <i class="ico-search display-inline-block bg-size-cover" />
         <input
+            class="text-align-left"
             :value="value"
             type="text"
             autocomplete="false"
@@ -49,12 +50,9 @@ export default {
 <style scoped>
     span {
         height: 38px;
-        background: #f6f6f6;
-        box-sizing: border-box;
-        border-radius: 3px;
+        background-color: var(--bg-input-search);
+        border-radius: var(--border-radius-3);
         padding: 0 1rem;
-        display: flex;
-        align-items: center;
         width: 400px;
         margin-left: 1rem;
     }
@@ -66,9 +64,7 @@ export default {
         width: 100%;
         outline: none;
         font-size: 14px;
-        font-weight: 400;
         letter-spacing: 0;
-        text-align: left;
         margin-right: 8px;
         padding: 0;
         max-height: 100%;
@@ -76,17 +72,15 @@ export default {
     }
 
     input:placeholder {
-        color: #9caab9;
+        color: var(--color-input-search-placeholder);
     }
 
     span.focusing {
-        box-shadow: inset 0 0 0 1px #eef1f4;
+        box-shadow: inset 0 0 0 1px var(--border-input-search);
     }
 
     i {
         background-image: url('../../assets/images/ico-search.svg');
-        background-size: cover;
-        display: inline-block;
         width: 20px;
         height: 20px;
         margin-right: 12px;

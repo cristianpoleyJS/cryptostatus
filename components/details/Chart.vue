@@ -1,12 +1,12 @@
 <template>
-  <section id="coin-chart" />
+  <section id="coin-chart" class="w-full"/>
 </template>
 
 <script>
+import { TAB_ALL, TAB_1Y, TAB_3M, TAB_1M, TAB_7D, TAB_1D } from '@/utils/constants'
 import { createChart } from 'lightweight-charts'
 import { getAssetHistoryById } from '@/api'
 import { addDays, formatAsset } from '@/utils'
-import { TAB_ALL, TAB_1Y, TAB_3M, TAB_1M, TAB_7D, TAB_1D } from '@/utils/constants'
 
 export default {
   props: {
@@ -71,7 +71,7 @@ export default {
           chart: {
             ...chartOptions,
             layout: {
-              backgroundColor: '#fff',
+              backgroundColor: '#f6f6f6',
               lineColor: '#2B2B43',
               textColor: '#D9D9D9'
             },
@@ -110,12 +110,19 @@ export default {
       this.history = newVal
     },
 
+    '$store.getters.getTheme' (newVal) {
+      this.chart.applyOptions(this.themesData[`${newVal}Theme`].chart)
+    },
+
     '$store.getters.getCurrency' () {
-      // this.removeSeries()
+      if (this.chart) {
+        this.chart.remove()
+        this.printChart()
+      }
     }
   },
   async beforeMount () {
-    const response = await getAssetHistoryById(this.asset.id)
+    const response = await getAssetHistoryById({ id: this.asset.id })
     const { data } = await response.json()
     this.history = data.reduce((result, currentVal) => {
       result.push(formatAsset(currentVal))
@@ -136,7 +143,7 @@ export default {
           borderVisible: false
         },
         localization: {
-          locale: navigator?.language || 'en-US',
+          locale: 'en-US',
           dateFormat: 'dd/MM/yyyy'
         }
       })
@@ -148,9 +155,9 @@ export default {
       this.history.forEach((item) => {
         item.value = item.valuePerCurrency[this.$store.getters.getCurrency]
       })
-      this.chart.applyOptions(this.themesData.darkTheme.chart)
+      this.chart.applyOptions(this.themesData[`${this.$store.getters.getTheme}Theme`].chart)
+      areaSeries.applyOptions(this.themesData[`${this.$store.getters.getTheme}Theme`].series)
       areaSeries.setData(this.history)
-      areaSeries.applyOptions(this.themesData.darkTheme.series)
       this.filterHistoryByTab(this.tab)
     },
 
@@ -188,6 +195,5 @@ export default {
 <style scoped>
     section {
         margin-top: 2rem;
-        width: 100%;
     }
 </style>

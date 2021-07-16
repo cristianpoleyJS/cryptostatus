@@ -9,6 +9,7 @@
 
 <script>
 import ListAssets from '@/components/dashboard/ListAssets'
+import { RESET_ASSETS } from '@/store'
 
 export default {
   components: {
@@ -24,6 +25,9 @@ export default {
   async beforeMount () {
     await this.dispatchActionGetAssets()
     this.loading = false
+  },
+  beforeDestroy () {
+    this.$store.commit(RESET_ASSETS)
   },
   methods: {
 

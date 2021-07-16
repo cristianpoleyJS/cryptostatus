@@ -1,11 +1,11 @@
 @font-face {
     font-family: "Graphik";
-    font-weight: 500;
+    font-weight: 400;
     src: local("Graphik"), url(../fonts/Graphik-Regular.ttf) format("truetype");
 }
 @font-face {
     font-family: "Graphik";
-    font-weight: 600;
+    font-weight: 500;
     src: local("Graphik"), url(../fonts/Graphik-Medium.ttf) format("truetype");
 }
 @font-face {
@@ -15,27 +15,96 @@
 }
 
 :root {
-    --base-typography-primary-font-family: Graphik;
-    --base-typography-text-font-weight-regular: 500;
-    --base-typography-text-font-weight-medium: 600;
-    --base-typography-text-font-weight-bold: 700;
+    --primary-font-family: Graphik;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
     --base-text-font-size: 1rem;
 
-    --white: #ffffff;
-    --main-color-app: rgb(5, 15, 25);
-    --second-color-app: #2d68ed;
+    --second-text-color: #2d68ed;
+    --third-text-color: #96a0b4;
+    --white: #fff;
+    --color-negative-change: #ea3943;
+    --color-positive-change: #16c784;
+    --color-input-search-placeholder: #9caab9;
+
+    --border-radius-3: 3px;
+    --border-radius-4: 4px;
+    --border-radius-8: 8px;
+    --border-radius-10: 10px;
+    --border-radius-12: 12px;
+    --border-radius-100: 100px;
+    --border-radius-100-percent: 100%;
+
+    --grid-template-columns-list: 5fr 50fr 20fr 15fr 10fr;
+}
+
+body.light {
+    --main-text-color: rgb(5, 15, 25);
+
+    --bg-color-app: #f8f9fd;
+    --bg-sidebar: var(--white);
+    --bg-sidebar-hover: rgb(236, 245, 254);
+    --bg-header: var(--white);
+    --bg-list-header: #fafcfe;
+    --bg-list-assets: var(--white);
+    --bg-list-asset-hover: rgb(236, 245, 254);
+    --bg-input-search: #f6f6f6;
+    --bg-details-asset: var(--white);
+    --bg-tabs: rgb(239, 242, 245);
+    --bg-tabs-items: #dfdfe0;
+    --bg-header-actions: #f6f6f6;
+
+    --bg-image-logo: url("../../assets/images/logo-light.svg");
+    --bg-ico-action-favorite: url("../../assets/images/ico-favorite-light.svg");
+    --bg-ico-theme: url('../../assets/images/ico-theme-light.svg');
+
+    --border-general-color: #eef1f4;
+    --border-input-search: #eef1f4;
+}
+
+body.dark {
+    --main-text-color: var(--white);
+
+    --bg-color-app: #1b1d21;
+    --bg-sidebar: #212631;
+    --bg-sidebar-hover: #323546;
+    --bg-header: #212631;
+    --bg-list-header: #333646;
+    --bg-list-assets: #17181b;
+    --bg-list-asset-hover: #171a25;
+    --bg-input-search: rgb(23, 25, 36);
+    --bg-details-asset: #17181b;
+    --bg-tabs: #323546;
+    --bg-tabs-items:#161924;
+    --bg-header-actions: #323546;
+
+    --bg-image-logo: url("../../assets/images/logo-dark.svg");
+    --bg-ico-action-favorite: url("../../assets/images/ico-favorite-dark.svg");
+    --bg-ico-theme: url('../../assets/images/ico-theme-dark.svg');
+
+    --border-general-color: #20232d;
+    --border-input-search: rgb(36 41 52);
+}
+
+@media (max-width: 1024px) {
+    
+    :root {
+        --bg-image-logo: url("../../assets/images/mobile-logo.svg");
+    }
 }
 
 * {
-    font-family: var(--base-typography-primary-font-family), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--primary-font-family), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: var(--base-text-font-size);
-    font-weight: var(--base-typography-text-font-weight-regular);
+    font-weight: var(--font-weight-regular);
+    color: var(--main-text-color);
     box-sizing: border-box;
-    color: var(--main-color-app);
     margin: 0;
     padding: 0;
     border: 0;
     font-size: 100%;
+    transition: background-color 0.2s;
     vertical-align: baseline;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -44,6 +113,9 @@
     list-style: none;
 }
 
+body {
+    background-color: var(--bg-color-app);
+}
 
 a:visited {
     color: pink;
@@ -58,7 +130,7 @@ a:visited {
 }
 
 *::-webkit-scrollbar-thumb {
-    border-radius: 12px;
+    border-radius: var(--border-radius-12);
     border: 4px solid rgba(255, 255, 255, 0);
     background-color: #bdbdbd;
 }
@@ -68,7 +140,7 @@ a:visited {
 }
 
 *::-webkit-scrollbar-thumb:hover {
-    border-radius: 12px;
+    border-radius: var(--border-radius-12);
     border: 4px solid rgba(255, 255, 255, 0);
     background-clip: content-box;
     background-color: #bdbdbd;

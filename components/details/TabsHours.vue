@@ -1,12 +1,13 @@
 <template>
   <div>
-      <ul>
+      <ul class="display-flex justify-start align-items-center">
             <li
                 v-for="(tab, ix) in tabs"
                 :key="ix"
                 :class="{
                     'selected': tab === tabSelected
                 }"
+                class="cursor-pointer text-2xs"
                 @click="$emit('select-tab', tab)">
                     {{ tab }}
             </li>
@@ -34,33 +35,25 @@ export default {
 
 <style scoped>
     ul {
-        display: flex;
-        justify-content: start;
         grid-gap: 1rem;
         margin-top: 1rem;
         max-width: 300px;
         max-width: fit-content;
-        background: #323546;
-        align-items: center;
+        background-color: var(--bg-tabs);
         height: 36px;
-        border-radius: 3px;
+        border-radius: var(--border-radius-3);
         padding: 0 10px;
     }
 
     li {
         padding: 7px 8px;
         white-space: nowrap;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        color: rgb(255, 255, 255);
-        background: #323546;
-        border-radius: 3px;
+        font-weight: var(--font-weight-medium);
+        border-radius: var(--border-radius-3);
     }
 
     li.selected {
-        background: #161924;
-        box-shadow: rgb(50 53 70) 0px 1px 0px;
-        font-weight: 600;
+        background: var(--bg-tabs-items);
+        font-weight: var(--font-weight-medium);
     }
 </style>

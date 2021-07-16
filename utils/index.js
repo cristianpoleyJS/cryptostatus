@@ -2,7 +2,7 @@ import { CURRENCY_DOLAR, CURRENCY_EUR } from '@/utils/constants'
 import Asset from '@/classes/Asset'
 
 export const formatCurrency = (price, currency) => {
-  const formatter = new Intl.NumberFormat(navigator.language || navigator.userLanguage, {
+  const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency
   })

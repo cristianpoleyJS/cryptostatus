@@ -2,7 +2,7 @@
     <span
       class="favorite text-align-center"
       @click.stop.prevent="changeFavorite">
-      <i :class="`display-inline-block cursor-pointer ${isFavorite ? 'is-favorite' : ''}`" />
+      <i :class="`bg-size-cover display-inline-block cursor-pointer ${isFavorite ? 'is-favorite' : ''}`" />
     </span>
 </template>
 
@@ -30,8 +30,7 @@ export default {
 
 <style>
   .favorite i {
-    background-image: url("../../assets/images/ico-favorite.svg");
-    background-size: cover;
+    background-image: var(--bg-ico-action-favorite);
     width: 20px;
     height: 20px;
   }

@@ -1,11 +1,11 @@
 <template>
   <section>
-    <h2>
+    <h3 class="align-items-center display-flex justify-space-between text-xl">
       Assets
 
       <InputSearch v-model="inputSearch" />
-    </h2>
-    <div class="display-grid list-assets-header">
+    </h3>
+    <div class="list-assets-header display-grid align-items-center">
       <span>#</span>
       <span>Coin name</span>
       <span>Current Price</span>
@@ -19,13 +19,14 @@
           :key="asset.id"
           :asset="asset" />
       </template>
-      <span v-else class="empty-no-results">No results</span>
+      <EmptyResults v-else />
     </div>
     <div v-else>
       <SkeletonPlaceholderListAssets :length="20" />
     </div>
     <button
       v-if="showSeeMore"
+      class="cursor-pointer display-flex justify-center align-items-center w-full"
       @click="$emit('see-more')">
       See more <img src="@/assets/images/ico-see-more.svg">
     </button>
@@ -34,12 +35,14 @@
 
 <script>
 import SkeletonPlaceholderListAssets from '@/components/dashboard/SkeletonPlaceholderListAssets'
+import EmptyResults from '@/components/common/EmptyResults'
 import InputSearch from '@/components/common/InputSearch'
 import Asset from '@/components/dashboard/Asset'
 
 export default {
   components: {
     SkeletonPlaceholderListAssets,
+    EmptyResults,
     InputSearch,
     Asset
   },
@@ -77,64 +80,47 @@ export default {
 <style scoped>
 
     section {
-        background-color: var(--white);
+        background-color: var(--bg-list-assets);
         max-width: 1200px;
         overflow-x: auto;
     }
 
-    h2 {
+    h3 {
         padding: 0 2rem;
         height: 54px;
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
         grid-template-columns: 20fr 80fr;
         font-size: 18px;
-        font-weight: var(--base-typography-text-font-weight-medium);
+        font-weight: var(--font-weight-medium);
     }
     section div {
         min-width: 600px;
     }
 
     section div.list-assets-header {
-        border-top: 1px solid #eef1f4;
-        border-bottom: 1px solid #eef1f4;
-        align-items: center;
+        border-top: 1px solid var(--border-general-color);
+        border-bottom: 1px solid var(--border-general-color);
         padding: 0 2rem;
         height: 54px;
-        grid-template-columns: 5fr 50fr 20fr 15fr 10fr;
-        background-color: #fafcfe;
+        grid-template-columns: var(--grid-template-columns-list);
+        background-color: var(--bg-list-header);
         overflow-x: auto;
     }
     section div.list-assets-header span {
-        font-weight: var(--base-typography-text-font-weight-medium);
-        color: #96a0b4;
-    }
-
-    .empty-no-results {
-      font-style: italic;
-      display: flex;
-      justify-content: center;
-      height: 56px;
-      align-items: center;
+        font-weight: var(--font-weight-medium);
+        color: var(--third-text-color);
     }
 
     button {
-      width: 100%;
       height: 56px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      font-weight: 600;
-      justify-content: center;
-      background-color: var(--white);
-      color: var(--second-color-app);
+      font-weight: var(--font-weight-medium);
+      background-color: var(--bg-list-assets);
+      color: var(--second-text-color);
     }
     button img {
       width: 14px;
       margin-left: 1rem;
     }
     button:hover {
-      background-color: rgb(236, 245, 254);
+      background-color: var(--bg-list-asset-hover);
     }
 </style>

@@ -1,19 +1,22 @@
 import { getAssets, getAssetById } from '@/api'
 import { formatAsset, formatAssets } from '@/utils'
-import { CURRENCY_DOLAR } from '@/utils/constants'
+import { CURRENCY_DOLAR, THEME_LIGHT } from '@/utils/constants'
 
 export const SET_ASSETS_FAVORITE = 'SET_ASSETS_FAVORITE'
 export const SET_ASSET_SELECTED = 'SET_ASSET_SELECTED'
 export const UNCHECK_FAVORITE = 'UNCHECK_FAVORITE'
 export const CHECK_FAVORITE = 'CHECK_FAVORITE'
+export const RESET_ASSETS = 'RESET_ASSETS'
 export const SET_CURRENCY = 'SET_CURRENCY'
 export const SET_ASSETS = 'SET_ASSETS'
+export const SET_THEME = 'SET_THEME'
 
 export const state = () => ({
   assets: [],
   assetsFavorite: [],
   assetSelected: {},
-  currency: CURRENCY_DOLAR
+  currency: CURRENCY_DOLAR,
+  theme: THEME_LIGHT
 })
 
 export const getters = {
@@ -24,7 +27,9 @@ export const getters = {
 
   getAssetSelected: state => state.assetSelected,
 
-  getCurrency: state => state.currency
+  getCurrency: state => state.currency,
+
+  getTheme: state => state.theme
 }
 export const actions = {
 
@@ -36,7 +41,7 @@ export const actions = {
 
   async actionGetFavoritesAssets ({ commit }) {
     const currentObjectFavorites = JSON.parse(localStorage.getItem('cryptoNineFavorites'))
-    if (currentObjectFavorites) {
+    if (Object.keys(currentObjectFavorites).length) {
       const response = await getAssets({ ids: Object.keys(currentObjectFavorites).join(',') })
       const { data } = await response.json()
       commit(SET_ASSETS_FAVORITE, formatAssets(data))
@@ -88,10 +93,16 @@ export const mutations = {
   [SET_CURRENCY]: (state, currency) => {
     state.currency = currency
   },
+  [SET_THEME]: (state, theme) => {
+    state.theme = theme
+  },
   [CHECK_FAVORITE]: (state, asset) => {
     asset.favorite = true
   },
   [UNCHECK_FAVORITE]: (state, asset) => {
     asset.favorite = false
+  },
+  [RESET_ASSETS]: (state) => {
+    state.assets = []
   }
 }
