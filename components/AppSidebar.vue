@@ -15,6 +15,12 @@
             <span>Dashboard</span>
           </nuxt-link>
         </li>
+        <li>
+          <nuxt-link :to="'/favorites'" class="cursor-pointer">
+            <img src="@/assets/images/ico-favorite-blue.svg">
+            <span>My favorites</span>
+          </nuxt-link>
+        </li>
       </ul>
     </nav>
   </section>
@@ -71,7 +77,9 @@ nav a > span {
   color: var(--second-color-app);
   font-weight: var(--base-typography-text-font-weight-medium);
 }
-
+nav a.nuxt-link-exact-active {
+  background-color: rgb(236, 245, 254);
+}
 @media (max-width: 1024px) {
   .app-sidebar-logo {
     padding-left: 8px;

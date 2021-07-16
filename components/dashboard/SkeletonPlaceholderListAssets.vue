@@ -2,9 +2,9 @@
     <span>
         <a v-for="ix in new Array(length)" :key="ix">
             <SkeletonPlaceholder variant="circle" :width="30" :height="30" />
-            <SkeletonPlaceholder variant="text" />
-            <SkeletonPlaceholder variant="text" />
-            <SkeletonPlaceholder variant="text" />
+            <SkeletonPlaceholder variant="text" :width="420" />
+            <SkeletonPlaceholder variant="text" :width="140" />
+            <SkeletonPlaceholder variant="text" :width="120" />
             <SkeletonPlaceholder variant="circle" :width="30" :height="30" />
         </a>
     </span>
@@ -34,7 +34,7 @@ export default {
     align-items: center;
     padding: 0 2rem;
     height: 54px;
-    grid-template-columns: 5fr 35fr 25fr 25fr 10fr;
+    grid-template-columns: 5fr 48fr 22fr 17fr 5fr;
     grid-gap: 1rem;
   }
 </style>

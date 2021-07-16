@@ -15,19 +15,18 @@
     <div v-if="!loading">
       <template v-if="assetsFiltered.length">
         <Asset
-          v-for="(asset, ix) in assetsFiltered"
+          v-for="asset in assetsFiltered"
           :key="asset.id"
-          :asset="{
-            ...asset,
-            index: ix
-          }" />
+          :asset="asset" />
       </template>
       <span v-else class="empty-no-results">No results</span>
     </div>
     <div v-else>
       <SkeletonPlaceholderListAssets :length="20" />
     </div>
-    <button @click="$emit('see-more')">
+    <button
+      v-if="showSeeMore"
+      @click="$emit('see-more')">
       See more <img src="@/assets/images/ico-see-more.svg">
     </button>
   </section>
@@ -52,6 +51,10 @@ export default {
     loading: {
       type: Boolean,
       default: false
+    },
+    showSeeMore: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
@@ -99,7 +102,7 @@ export default {
         align-items: center;
         padding: 0 2rem;
         height: 54px;
-        grid-template-columns: 5fr 40fr 20fr 25fr 10fr;
+        grid-template-columns: 5fr 50fr 20fr 15fr 10fr;
         background-color: #fafcfe;
         overflow-x: auto;
     }

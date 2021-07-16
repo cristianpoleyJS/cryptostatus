@@ -6,7 +6,8 @@
       <SkeletonPlaceholder variant="text" :width="40" />
       <SkeletonPlaceholder variant="text" :width="80" />
     </div>
-    <SkeletonPlaceholder variant="rect" :width="500" :height="400" />
+    <SkeletonPlaceholder variant="rect" :width="800" :height="600" />
+    <SkeletonPlaceholder variant="rect" :width="800" :height="100" />
   </section>
 </template>
 

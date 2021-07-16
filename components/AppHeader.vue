@@ -29,10 +29,10 @@ export default {
     section {
         padding-left: 2rem;
         background-color: var(--white);
+        border-bottom: 1px solid #eef1f4;
     }
 
     .app-header-wrapper {
-        border-bottom: 1px solid #eef1f4;
         height: 4rem;
         align-items: center;
         grid-template-columns: 70fr 15fr 15fr;

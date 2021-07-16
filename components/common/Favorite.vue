@@ -1,28 +1,28 @@
 <template>
     <span
       class="favorite text-align-center"
-      @click.stop.prevent="addToFavorite">
-      <i class="display-inline-block cursor-pointer" />
+      @click.stop.prevent="changeFavorite">
+      <i :class="`display-inline-block cursor-pointer ${isFavorite ? 'is-favorite' : ''}`" />
     </span>
 </template>
 
 <script>
 export default {
-    data () {
-        return {
-            favorite: false
-        }
-    },
     props: {
-        coinId: {
-            type: String,
-            required: true
+        isFavorite: {
+          type: Boolean,
+          default: false
+        },
+        assetClicked: {
+          type: Object,
+          required: true
         }
     },
     methods: {
-        addToFavorite () {
-          const favorites = localStorage.getItem('cryptoNineFavorites')
-          console.log(favorites)
+        changeFavorite () {
+          !this.isFavorite
+          ? this.$store.dispatch('actionCheckFavorite', this.assetClicked)
+          : this.$store.dispatch('actionUncheckFavorite', this.assetClicked)
         }
     }
 }
