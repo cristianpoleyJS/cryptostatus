@@ -1,10 +1,11 @@
 <template>
   <section>
     <div class="app-header-wrapper display-grid align-items-center justify-center">
-      <p class="app-header-welcome">
-        <span class="title text-2xs">Hi!</span>
-        <span class="description display-block text-2xs">Welcome back!</span>
-      </p>
+      <span class="app-header-logo">
+        <NuxtLink to="/" class="cursor-pointer w-full">
+          <i class="display-block bg-size-cover" />
+        </NuxtLink>
+      </span>
       <HeaderActions />
       <p class="app-header-avatar h-full text-align-center display-flex justify-center align-items-center">
         <AvatarUser />
@@ -15,7 +16,7 @@
 
 <style scoped>
     section {
-        padding-left: 2rem;
+        padding-left: 1rem;
         height: 64px;
         background-color: var(--bg-header);
         border-bottom: 1px solid var(--border-general-color);
@@ -23,7 +24,7 @@
 
     .app-header-wrapper {
         height: 4rem;
-        grid-template-columns: 70fr 15fr 15fr;
+        grid-template-columns: 15fr 65fr 20fr;
         max-width: 1356px;
     }
 
@@ -37,15 +38,17 @@
     .app-header-avatar {
         border-left: 1px solid var(--border-general-color);
     }
-    @media (max-width: 460px) {
-        section {
-            padding-left: 0;
-        }
-        .app-header-wrapper {
-            grid-template-columns: 50fr 20fr;
-        }
-        .app-header-welcome {
-            display: none;
-        }
+
+    .app-header-logo {
+      padding-right: 1rem;
+      border-right: 1px solid var(--border-general-color);
     }
+
+    .app-header-logo i {
+      background-image: var(--bg-image-logo);
+      width: 56px;
+      vertical-align: middle;
+      height: 26px;
+    }
+
 </style>

@@ -100,6 +100,10 @@ export default {
       }
     }
   },
+  async fetch () {
+    this.history = await this.$store.dispatch('actionGetHistoryById', { id: this.asset.id })
+    this.printChart()
+  },
   watch: {
 
     'tab' (newVal, oldVal) {
@@ -118,10 +122,6 @@ export default {
         this.printChart()
       }
     }
-  },
-  async beforeMount () {
-    this.history = await this.$store.dispatch('actionGetHistoryById', { id: this.asset.id })
-    this.printChart()
   },
   methods: {
 
@@ -177,7 +177,8 @@ export default {
         return subtractDays(currentDate, object).getTime() - new Date(item.time.year, item.time.month - 1, item.time.day + 1).getTime() <= 0
       })
     }
-  }
+  },
+  fetchOnServer: false
 }
 </script>
 

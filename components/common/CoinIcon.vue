@@ -10,22 +10,22 @@
 import iconCoinDefault from '@/assets/images/ico-coin.svg'
 
 export default {
-    props: {
-        coinId: {
-            type: String,
-            required: true
-        },
-        styleComponent: {
-            type: String,
-            default: ''
-        }
+  props: {
+    coinId: {
+      type: String,
+      required: true
     },
-    methods: {
-
-        changeIcon (event) {
-            const target = event.target || event.srcElement
-            target.src = iconCoinDefault
-        }
+    styleComponent: {
+      type: String,
+      default: ''
     }
+  },
+  methods: {
+
+    changeIcon (event) {
+      const target = event.target || event.srcElement
+      target.src = iconCoinDefault
+    }
+  }
 }
 </script>

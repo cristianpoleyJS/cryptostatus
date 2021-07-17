@@ -21,8 +21,6 @@ module.exports = {
         singleline: 'never',
         multiline: 'never'
       }
-    ],
-    'vue/valid-v-html': 'off',
-    'vue/no-v-html': 'off'
+    ]
   }
 }

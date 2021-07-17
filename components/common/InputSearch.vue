@@ -1,49 +1,49 @@
 <template>
-    <span
-        class="input-search-wrapper display-flex align-items-center"
-        :class="{
-            'focusing': focusing
-        }">
-        <i class="ico-search display-inline-block bg-size-cover" />
-        <input
-            class="text-align-left"
-            :value="value"
-            type="text"
-            autocomplete="false"
-            :placeholder="placeholder"
-            @input.prevent.stop="updateValue($event.target.value)"
-            @focus="focusing = true"
-            @blur="focusing = false">
-    </span>
+  <span
+    class="input-search-wrapper display-flex align-items-center"
+    :class="{
+      'focusing': focusing
+    }">
+    <i class="ico-search display-inline-block bg-size-cover" />
+    <input
+      class="text-align-left"
+      :value="value"
+      type="text"
+      autocomplete="false"
+      :placeholder="placeholder"
+      @input.prevent.stop="updateValue($event.target.value)"
+      @focus="focusing = true"
+      @blur="focusing = false">
+  </span>
 </template>
 
 <script>
 export default {
-    props: {
-        value: {
-            type: String,
-            default: ''
-        },
-        placeholder: {
-            type: String,
-            default: 'Search all assets'
-        }
+  props: {
+    value: {
+      type: String,
+      default: ''
     },
-    data () {
-        return {
-            focusing: false
-        }
-    },
-    methods: {
-        updateValue (value) {
-            this.$emit('input', value)
-        },
-
-        clear () {
-            this.$emit('input', '')
-            this.$emit('clear')
-        }
+    placeholder: {
+      type: String,
+      default: 'Search all assets'
     }
+  },
+  data () {
+    return {
+      focusing: false
+    }
+  },
+  methods: {
+    updateValue (value) {
+      this.$emit('input', value)
+    },
+
+    clear () {
+      this.$emit('input', '')
+      this.$emit('clear')
+    }
+  }
 }
 </script>
 

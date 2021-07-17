@@ -1,30 +1,29 @@
 <template>
   <section>
     <ListAssets
-      :loading="loading"
+      :loading="$fetchState.pending"
       :assets="$store.getters.getAssets"
       @see-more="seeMore()" />
   </section>
 </template>
 
 <script>
-import ListAssets from '@/components/dashboard/ListAssets'
 import { RESET_ASSETS } from '@/store'
-
 export default {
-  components: {
-    ListAssets
-  },
+  layout: ({ isMobile }) => isMobile ? 'mobile' : 'default',
   data () {
     return {
-      loading: true,
       limit: 20,
       offset: 0
     }
   },
-  async beforeMount () {
+  async fetch () {
     await this.dispatchActionGetAssets()
-    this.loading = false
+  },
+  head () {
+    return {
+      title: 'CryptoNine - Dashboard'
+    }
   },
   beforeDestroy () {
     this.$store.commit(RESET_ASSETS)
@@ -38,12 +37,8 @@ export default {
     seeMore () {
       this.offset += this.limit
       this.dispatchActionGetAssets()
-    },
-
-    openAsset () {
-      this.limit = 20
-      this.offset = 0
     }
-  }
+  },
+  fetchOnServer: false
 }
 </script>

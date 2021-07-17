@@ -1,31 +1,23 @@
 <template>
   <section>
-      <ListAssets
-        :show-see-more="false"
-        :assets="$store.getters.getAssetsFavorites"
-        :loading="loading" />
+    <ListAssets
+      :show-see-more="false"
+      :assets="$store.getters.getAssetsFavorites"
+      :loading="$fetchState.pending" />
   </section>
 </template>
 
 <script>
-import ListAssets from '@/components/dashboard/ListAssets'
-
 export default {
-  components: {
-    ListAssets
-  },
-  data () {
-      return {
-          loading: true
-      }
-  },
-  async beforeMount () {
+  layout: ({ isMobile }) => isMobile ? 'mobile' : 'default',
+  async fetch () {
     await this.$store.dispatch('actionGetFavoritesAssets')
-    this.loading = false
-  }
+  },
+  head () {
+    return {
+      title: 'CryptoNine - Favorites'
+    }
+  },
+  fetchOnServer: false
 }
 </script>
-
-<style scoped>
-
-</style>

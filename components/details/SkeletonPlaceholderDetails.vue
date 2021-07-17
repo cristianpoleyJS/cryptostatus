@@ -11,16 +11,6 @@
   </section>
 </template>
 
-<script>
-import SkeletonPlaceholder from '@/components/common/SkeletonPlaceholder'
-
-export default {
-    components: {
-        SkeletonPlaceholder
-    }
-}
-</script>
-
 <style scoped>
   div {
     grid-gap: 1rem;

@@ -1,23 +1,23 @@
 <template>
-    <span :class="`text-align-center display-inline-block text-2xs ${percent > 0 ? 'positive' : 'negative'}`">
-      {{ format(percent) }}
-    </span>
+  <span :class="`text-align-center display-inline-block text-2xs ${percent > 0 ? 'positive' : 'negative'}`">
+    {{ format(percent) }}
+  </span>
 </template>
 
 <script>
 export default {
-    props: {
-        percent: {
-            type: Number,
-            required: true
-        }
-    },
-    methods: {
-        
-        format (percent) {
-            return percent > 0 ? `+${percent}%` : `${percent}%`
-        }
+  props: {
+    percent: {
+      type: Number,
+      required: true
     }
+  },
+  methods: {
+
+    format (percent) {
+      return percent > 0 ? `+${percent}%` : `${percent}%`
+    }
+  }
 }
 </script>
 

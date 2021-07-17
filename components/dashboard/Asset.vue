@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link
+  <NuxtLink
     :to="`/price/${asset.id}`"
     class="asset display-grid cursor-pointer align-items-center">
     <span>{{ asset.rank }}</span>
@@ -15,22 +15,11 @@
     <Favorite
       :asset-clicked="asset"
       :is-favorite="asset.favorite" />
-  </nuxt-link>
+  </NuxtLink>
 </template>
 
 <script>
-import ChangePercent from '@/components/common/ChangePercent'
-import Favorite from '@/components/common/Favorite'
-import CoinIcon from '@/components/common/CoinIcon'
-import Price from '@/components/common/Price'
-
 export default {
-  components: {
-    ChangePercent,
-    Favorite,
-    CoinIcon,
-    Price
-  },
   props: {
     asset: {
       type: Object,
