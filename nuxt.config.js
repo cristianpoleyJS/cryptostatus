@@ -1,14 +1,14 @@
 export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  // Global page headers
   head: {
     title: 'CryptoNine',
     htmlAttrs: {
-      lang: 'es'
+      lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'CryptoNine - List cryptocurrencies and view details' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -16,33 +16,39 @@ export default {
     ]
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['assets/css/global.css', 'assets/css/utility-classes.css'],
-
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
+  // Global CSS
+  css: [
+    'assets/css/global.css',
+    'assets/css/utility-classes.css'
   ],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  // Auto import components
+  components: [
+    {
+      path: '@/components',
+      pathPrefix: false
+    }
+  ],
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  // Autofix lintter
   buildModules: [
-    'nuxt-vite',
     ['@nuxtjs/eslint-module', {
       fix: true
     }]
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-  ],
+  // New path for build
+  buildDir: 'nuxt-dist',
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  },
-
+  // Base route app by default
   router: {
     base: '/dashboard'
+  },
+
+  // Styling for loading app
+  loadingIndicator: {
+    name: 'cube-grid',
+    color: '#2d68ed',
+    background: 'white'
   }
 }

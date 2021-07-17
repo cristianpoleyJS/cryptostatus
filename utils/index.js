@@ -58,8 +58,5 @@ export const formatAsset = (asset, conversionEuroToUsd) => {
 
 const _calculateIsFavorite = (id) => {
   const objectFavorites = JSON.parse(localStorage.getItem('cryptoNineFavorites'))
-  if (objectFavorites) {
-    return objectFavorites[id]
-  }
-  return false
+  return objectFavorites ? objectFavorites[id] : false
 }

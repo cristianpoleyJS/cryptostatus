@@ -15,23 +15,23 @@
 
 <script>
 export default {
-    props: {
-        variant: {
-            type: String,
-            default: 'text',
-            validator (value) {
-                return ['text', 'circle', 'rect'].includes(value)
-            }
-        },
-        width: {
-            type: Number,
-            default: 300
-        },
-        height: {
-            type: Number,
-            default: 20
-        }
+  props: {
+    variant: {
+      type: String,
+      default: 'text',
+      validator (value) {
+        return ['text', 'circle', 'rect'].includes(value)
+      }
+    },
+    width: {
+      type: Number,
+      default: 300
+    },
+    height: {
+      type: Number,
+      default: 20
     }
+  }
 }
 </script>
 

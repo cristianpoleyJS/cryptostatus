@@ -1,29 +1,17 @@
 <template>
   <section>
-      <div class="app-header-wrapper display-grid align-items-center justify-center">
-        <p class="app-header-welcome">
-            <span class="title text-2xs">Hi!</span>
-            <span class="description display-block text-2xs">Welcome back!</span>
-        </p>
-        <HeaderActions />
-        <p class="app-header-avatar h-full text-align-center display-flex justify-center align-items-center">
-            <AvatarUser />
-        </p>
-      </div>
+    <div class="app-header-wrapper display-grid align-items-center justify-center">
+      <p class="app-header-welcome">
+        <span class="title text-2xs">Hi!</span>
+        <span class="description display-block text-2xs">Welcome back!</span>
+      </p>
+      <HeaderActions />
+      <p class="app-header-avatar h-full text-align-center display-flex justify-center align-items-center">
+        <AvatarUser />
+      </p>
+    </div>
   </section>
 </template>
-
-<script>
-import HeaderActions from '@/components/common/HeaderActions'
-import AvatarUser from '@/components/common/AvatarUser'
-
-export default {
-    components: {
-        HeaderActions,
-        AvatarUser
-    }
-}
-</script>
 
 <style scoped>
     section {

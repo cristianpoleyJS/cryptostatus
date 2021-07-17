@@ -34,18 +34,7 @@
 </template>
 
 <script>
-import SkeletonPlaceholderListAssets from '@/components/dashboard/SkeletonPlaceholderListAssets'
-import EmptyResults from '@/components/common/EmptyResults'
-import InputSearch from '@/components/common/InputSearch'
-import Asset from '@/components/dashboard/Asset'
-
 export default {
-  components: {
-    SkeletonPlaceholderListAssets,
-    EmptyResults,
-    InputSearch,
-    Asset
-  },
   props: {
     assets: {
       type: Array,

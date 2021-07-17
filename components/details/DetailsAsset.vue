@@ -24,26 +24,9 @@
 </template>
 
 <script>
-import ChangePercent from '@/components/common/ChangePercent'
-import TabsHours from '@/components/details/TabsHours'
-import ExtraInfo from '@/components/details/ExtraInfo'
-import Favorite from '@/components/common/Favorite'
-import CoinIcon from '@/components/common/CoinIcon'
-import Chart from '@/components/details/Chart'
-import Price from '@/components/common/Price'
-
 import { TAB_ALL } from '@/utils/constants'
 
 export default {
-  components: {
-    ChangePercent,
-    ExtraInfo,
-    TabsHours,
-    Favorite,
-    CoinIcon,
-    Chart,
-    Price
-  },
   props: {
     asset: {
       type: Object,

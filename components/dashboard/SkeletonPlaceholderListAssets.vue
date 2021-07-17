@@ -1,31 +1,26 @@
 <template>
-    <span>
-        <a
-            v-for="ix in new Array(length)"
-            :key="ix"
-            class="display-grid align-items-center">
-            <SkeletonPlaceholder variant="circle" :width="30" :height="30" />
-            <SkeletonPlaceholder variant="text" :width="420" />
-            <SkeletonPlaceholder variant="text" :width="140" />
-            <SkeletonPlaceholder variant="text" :width="120" />
-            <SkeletonPlaceholder variant="circle" :width="30" :height="30" />
-        </a>
-    </span>
+  <span>
+    <a
+      v-for="ix in new Array(length)"
+      :key="ix"
+      class="display-grid align-items-center">
+      <SkeletonPlaceholder variant="circle" :width="30" :height="30" />
+      <SkeletonPlaceholder variant="text" :width="420" />
+      <SkeletonPlaceholder variant="text" :width="140" />
+      <SkeletonPlaceholder variant="text" :width="120" />
+      <SkeletonPlaceholder variant="circle" :width="30" :height="30" />
+    </a>
+  </span>
 </template>
 
 <script>
-import SkeletonPlaceholder from '@/components/common/SkeletonPlaceholder'
-
 export default {
-    components: {
-        SkeletonPlaceholder
-    },
-    props: {
-        length: {
-            type: Number,
-            default: 5
-        }
+  props: {
+    length: {
+      type: Number,
+      default: 5
     }
+  }
 }
 </script>
 

@@ -1,27 +1,20 @@
 <template>
-  <SkeletonPlaceholderDetails v-if="loading" />
+  <SkeletonPlaceholderDetails v-if="$fetchState.pending" />
   <DetailsAsset
     v-else
     :asset="$store.getters.getAssetSelected" />
 </template>
 
 <script>
-import SkeletonPlaceholderDetails from '@/components/details/SkeletonPlaceholderDetails'
-import DetailsAsset from '@/components/details/DetailsAsset'
-
 export default {
-  components: {
-    SkeletonPlaceholderDetails,
-    DetailsAsset
+  async fetch () {
+    await this.$store.dispatch('actionGetAssetById', this.$route.params.id)
   },
-  data () {
+  head () {
     return {
-      loading: true
+      title: 'CryptoNine - Details coin'
     }
   },
-  async beforeMount () {
-    await this.$store.dispatch('actionGetAssetById', this.$route.params.id)
-    this.loading = false
-  }
+  fetchOnServer: false
 }
 </script>

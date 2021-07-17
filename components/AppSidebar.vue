@@ -1,25 +1,25 @@
 <template>
   <section class="app-sidebar">
     <span class="app-sidebar-logo display-flex align-items-center">
-      <nuxt-link :to="'/'" class="cursor-pointer w-full">
+      <NuxtLink to="/" class="cursor-pointer w-full">
         <i class="display-block bg-size-cover" />
-      </nuxt-link>
+      </NuxtLink>
     </span>
 
     <nav>
       <span class="text-xs">MAIN MENU</span>
       <ul>
         <li>
-          <nuxt-link :to="'/'" class="display-flex align-items-center">
+          <NuxtLink to="/" class="display-flex align-items-center">
             <img src="@/assets/images/ico-home.svg">
             <span>Dashboard</span>
-          </nuxt-link>
+          </NuxtLink>
         </li>
         <li>
-          <nuxt-link :to="'/favorites'" class="display-flex align-items-center">
+          <NuxtLink to="/favorites" class="display-flex align-items-center">
             <img src="@/assets/images/ico-favorite-blue.svg">
             <span>Favorites</span>
-          </nuxt-link>
+          </NuxtLink>
         </li>
       </ul>
     </nav>
@@ -61,7 +61,7 @@ nav a {
 }
 
 nav a:hover,
-nav a.nuxt-link-exact-active {
+nav a.NuxtLink-exact-active {
   background-color: var(--bg-sidebar-hover);
 }
 

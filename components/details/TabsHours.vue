@@ -1,17 +1,17 @@
 <template>
   <div>
-      <ul class="display-flex justify-start align-items-center">
-            <li
-                v-for="(tab, ix) in tabs"
-                :key="ix"
-                :class="{
-                    'selected': tab === tabSelected
-                }"
-                class="cursor-pointer text-2xs"
-                @click="$emit('select-tab', tab)">
-                    {{ tab }}
-            </li>
-      </ul>
+    <ul class="display-flex justify-start align-items-center">
+      <li
+        v-for="(tab, ix) in tabs"
+        :key="ix"
+        :class="{
+          'selected': tab === tabSelected
+        }"
+        class="cursor-pointer text-2xs"
+        @click="$emit('select-tab', tab)">
+        {{ tab }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -19,17 +19,17 @@
 import { TAB_ALL, TAB_1Y, TAB_3M, TAB_1M, TAB_7D, TAB_1D } from '@/utils/constants'
 
 export default {
-    props: {
-        tabSelected: {
-            type: String,
-            default: 'ALL'
-        }
-    },
-    data () {
-        return {
-            tabs: [TAB_1D, TAB_7D, TAB_1M, TAB_3M, TAB_1Y, TAB_ALL]
-        }
+  props: {
+    tabSelected: {
+      type: String,
+      default: TAB_ALL
     }
+  },
+  data () {
+    return {
+      tabs: [TAB_1D, TAB_7D, TAB_1M, TAB_3M, TAB_1Y, TAB_ALL]
+    }
+  }
 }
 </script>
 

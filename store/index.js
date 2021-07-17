@@ -40,38 +40,33 @@ export const getters = {
 export const actions = {
 
   async actionGetRateEuro ({ commit }) {
-    const response = await getRates({ id: 'euro' })
-    const { data } = await response.json()
+    const { data } = await getRates({ id: 'euro' })
     commit(SET_CONVERSION_EURO_TO_DOLLAR, 1 / data.rateUsd)
   },
 
   async actionGetAssets ({ commit, dispatch }, { limit, offset }) {
     await dispatch('actionGetRateEuro')
-    const response = await getAssets({ limit, offset })
-    const { data } = await response.json()
+    const { data } = await getAssets({ limit, offset })
     commit(SET_ASSETS, data)
   },
 
   async actionGetFavoritesAssets ({ commit, dispatch }) {
     await dispatch('actionGetRateEuro')
     const currentObjectFavorites = JSON.parse(localStorage.getItem('cryptoNineFavorites'))
-    if (Object.keys(currentObjectFavorites).length) {
-      const response = await getAssets({ ids: Object.keys(currentObjectFavorites).join(',') })
-      const { data } = await response.json()
+    if (currentObjectFavorites && Object.keys(currentObjectFavorites).length) {
+      const { data } = await getAssets({ ids: Object.keys(currentObjectFavorites).join(',') })
       commit(SET_ASSETS_FAVORITE, data)
     }
   },
 
   async actionGetAssetById ({ commit, dispatch }, id) {
     await dispatch('actionGetRateEuro')
-    const response = await getAssetById(id)
-    const { data } = await response.json()
+    const { data } = await getAssetById(id)
     commit(SET_ASSET_SELECTED, data)
   },
 
   async actionGetHistoryById ({ state }, { id }) {
-    const response = await getAssetHistoryById({ id })
-    const { data } = await response.json()
+    const { data } = await getAssetHistoryById({ id })
     return formatAssets(data, state.conversionEuroToUsd)
   },
 

@@ -1,34 +1,34 @@
 <template>
-    <span
-      class="favorite text-align-center"
-      @click.stop.prevent="changeFavorite">
-      <i :class="`bg-size-cover display-inline-block cursor-pointer ${isFavorite ? 'is-favorite' : ''}`" />
-    </span>
+  <span
+    class="favorite text-align-center"
+    @click.stop.prevent="changeFavorite">
+    <i :class="`bg-size-cover display-inline-block cursor-pointer ${isFavorite ? 'is-favorite' : ''}`" />
+  </span>
 </template>
 
 <script>
 export default {
-    props: {
-        isFavorite: {
-          type: Boolean,
-          default: false
-        },
-        assetClicked: {
-          type: Object,
-          required: true
-        }
+  props: {
+    isFavorite: {
+      type: Boolean,
+      default: false
     },
-    methods: {
-        changeFavorite () {
-          !this.isFavorite
-          ? this.$store.dispatch('actionCheckFavorite', this.assetClicked)
-          : this.$store.dispatch('actionUncheckFavorite', this.assetClicked)
-        }
+    assetClicked: {
+      type: Object,
+      required: true
     }
+  },
+  methods: {
+    changeFavorite () {
+      !this.isFavorite
+        ? this.$store.dispatch('actionCheckFavorite', this.assetClicked)
+        : this.$store.dispatch('actionUncheckFavorite', this.assetClicked)
+    }
+  }
 }
 </script>
 
-<style>
+<style scoped>
   .favorite i {
     background-image: var(--bg-ico-action-favorite);
     width: 20px;

@@ -1,5 +1,5 @@
 <template>
-    <span class="empty-no-results display-flex align-items-center justify-center">No results</span>
+  <span class="display-flex align-items-center justify-center">No results</span>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ export default {
 </script>
 
 <style scoped>
-    .empty-no-results {
+    span {
       font-style: italic;
       height: 56px;
     }
