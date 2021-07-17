@@ -1,7 +1,7 @@
 <template>
   <section class="app-sidebar">
     <span class="app-sidebar-logo display-flex align-items-center">
-      <nuxt-link :to="'/'" class="cursor-pointer w-100-percent">
+      <nuxt-link :to="'/'" class="cursor-pointer w-full">
         <i class="display-block bg-size-cover" />
       </nuxt-link>
     </span>
@@ -18,7 +18,7 @@
         <li>
           <nuxt-link :to="'/favorites'" class="display-flex align-items-center">
             <img src="@/assets/images/ico-favorite-blue.svg">
-            <span>My favorites</span>
+            <span>Favorites</span>
           </nuxt-link>
         </li>
       </ul>
@@ -87,7 +87,7 @@ nav a > span {
   }
   nav a {
     padding: 0 14px;
-    margin: 0 8px;
+    margin: 0 8px 2rem;
   }
 }
 </style>

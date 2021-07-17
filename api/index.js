@@ -22,6 +22,10 @@ export const getAssetHistoryById = ({ id, interval = 'd1', start = 1528470720000
   return fetch(`${API_URL}/assets/${id}/history?interval=${interval}&start=${start}&end=${end}`, REQUEST_OPTIONS)
 }
 
+export const getRates = ({ id }) => {
+  return fetch(`${API_URL}/rates/${id}`)
+}
+
 export const openWatchPrices = (assets) => {
   const pricesWs = new WebSocket(`${API_WEB_SOCKET}?assets=${assets}`)
   return pricesWs

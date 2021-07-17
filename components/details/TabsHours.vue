@@ -46,7 +46,7 @@ export default {
     }
 
     li {
-        padding: 7px 8px;
+        padding: 4px 8px;
         white-space: nowrap;
         font-weight: var(--font-weight-medium);
         border-radius: var(--border-radius-3);

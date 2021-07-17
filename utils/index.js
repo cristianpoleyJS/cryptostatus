@@ -1,4 +1,4 @@
-import { CURRENCY_DOLAR, CURRENCY_EUR } from '@/utils/constants'
+import { CURRENCY_USD, CURRENCY_EURO } from '@/utils/constants'
 import Asset from '@/classes/Asset'
 
 export const formatCurrency = (price, currency) => {
@@ -10,47 +10,47 @@ export const formatCurrency = (price, currency) => {
   return formatter.format(price)
 }
 
-export const addDays = (date, { days = 0, month = 0, year = 0 }) => {
+export const subtractDays = (date, { days = 0, months = 0, years = 0 }) => {
   return new Date(
-    date.getFullYear() + year,
-    date.getMonth() + month,
-    date.getDate() + days,
+    date.getFullYear() - years,
+    date.getMonth() - months,
+    date.getDate() - days,
     0, 0, 0, 0
   )
 }
 
-export const formatAssets = (assets) => {
+export const formatAssets = (assets, conversionEuroToUsd) => {
   return assets.reduce((result, currentVal) => {
-    result.push(formatAsset(currentVal))
+    result.push(formatAsset(currentVal, conversionEuroToUsd))
     return result
   }, [])
 }
 
-export const formatAsset = (asset) => {
+export const formatAsset = (asset, conversionEuroToUsd) => {
   const priceFormatted = (asset.priceUsd * 1).toFixed(2) * 1
   return new Asset({
     id: asset.id,
     rank: asset.rank,
     symbol: asset.symbol,
     price: {
-      [CURRENCY_DOLAR]: priceFormatted,
-      [CURRENCY_EUR]: priceFormatted * 0.85
+      [CURRENCY_USD]: priceFormatted,
+      [CURRENCY_EURO]: priceFormatted * conversionEuroToUsd
     },
     changePercent24Hr: (asset.changePercent24Hr * 1).toFixed(3) * 1,
     favorite: _calculateIsFavorite(asset.id),
     name: asset.name,
     valuePerCurrency: {
-      [CURRENCY_DOLAR]: priceFormatted,
-      [CURRENCY_EUR]: priceFormatted * 0.85
+      [CURRENCY_USD]: priceFormatted,
+      [CURRENCY_EURO]: priceFormatted * conversionEuroToUsd
     },
     time: asset.date,
     volume24Hr: {
-      [CURRENCY_DOLAR]: asset.volumeUsd24Hr,
-      [CURRENCY_EUR]: asset.volumeUsd24Hr * 0.85
+      [CURRENCY_USD]: asset.volumeUsd24Hr,
+      [CURRENCY_EURO]: asset.volumeUsd24Hr * conversionEuroToUsd
     },
     marketCap: {
-      [CURRENCY_DOLAR]: asset.marketCapUsd,
-      [CURRENCY_EUR]: asset.marketCapUsd * 0.85
+      [CURRENCY_USD]: asset.marketCapUsd,
+      [CURRENCY_EURO]: asset.marketCapUsd * conversionEuroToUsd
     },
     explorer: asset.explorer
   })

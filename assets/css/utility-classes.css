@@ -38,8 +38,8 @@
   text-transform: capitalize;
 }
 
-.w-100-percent {
-  width: 100%;
+.vertical-align-middle {
+  vertical-align: middle;
 }
 
 .bg-size-cover {
@@ -47,7 +47,7 @@
 }
 
 .bg-position-center {
-    background-position: center;
+  background-position: center;
 }
 
 .align-items-center {
@@ -55,46 +55,50 @@
 }
 
 .justify-space-evenly {
-    justify-content: space-evenly;
+  justify-content: space-evenly;
 }
 
 .justify-space-between {
-    justify-content: space-between;
-}
-.justify-center {
-    justify-content: center;
-}
-.justify-start {
-    justify-content: start;
+  justify-content: space-between;
 }
 
-.vertical-align-middle {
-    vertical-align: middle;
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: start;
 }
 
 .w-full {
-    width: 100%;
+  width: 100%;
 }
+
 .h-full {
-    height: 100%;
+  height: 100%;
 }
+
 .text-xs {
-    font-size: 12px;
-    line-height: 1rem;
+  font-size: 12px;
+  line-height: 1rem;
 }
+
 .text-2xs {
-    font-size: 14px;
-    line-height: 20px;
+  font-size: 14px;
+  line-height: 20px;
 }
+
 .text-base {
-    font-size: var(--base-text-font-size);
-    line-height: 24px;
+  font-size: var(--base-text-font-size);
+  line-height: 24px;
 }
+
 .text-xl {
-    font-size: 18px;
-    line-height: 28px;
+  font-size: 18px;
+  line-height: 28px;
 }
+
 .text-2xl {
-    font-size: 32px;
-    line-height: 40px;
+  font-size: 32px;
+  line-height: 40px;
 }
