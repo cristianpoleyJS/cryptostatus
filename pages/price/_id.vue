@@ -7,6 +7,7 @@
 
 <script>
 export default {
+  layout: ({ isMobile }) => isMobile ? 'mobile' : 'default',
   async fetch () {
     await this.$store.dispatch('actionGetAssetById', this.$route.params.id)
   },

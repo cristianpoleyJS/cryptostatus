@@ -10,6 +10,7 @@
 <script>
 import { RESET_ASSETS } from '@/store'
 export default {
+  layout: ({ isMobile }) => isMobile ? 'mobile' : 'default',
   data () {
     return {
       limit: 20,

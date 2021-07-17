@@ -42,7 +42,8 @@ export default {
 
   // Base route app by default
   router: {
-    base: '/dashboard'
+    base: '/dashboard',
+    middleware: 'mobile'
   },
 
   // Styling for loading app
