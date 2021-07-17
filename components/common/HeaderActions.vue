@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { THEME_DARK, THEME_LIGHT, CURRENCY_EUR, CURRENCY_DOLAR } from '@/utils/constants'
+import { THEME_DARK, THEME_LIGHT, CURRENCY_EURO, CURRENCY_USD } from '@/utils/constants'
 import { SET_CURRENCY, SET_THEME } from '@/store'
 
 export default {
@@ -27,19 +27,19 @@ export default {
 
         const currencyLocalStorage = localStorage.getItem('cryptoNineCurrency')
         if (!currencyLocalStorage) {
-            localStorage.setItem('cryptoNineCurrency', CURRENCY_DOLAR)
-            this.$store.commit(SET_CURRENCY, CURRENCY_DOLAR)
+            localStorage.setItem('cryptoNineCurrency', CURRENCY_USD)
+            this.$store.commit(SET_CURRENCY, CURRENCY_USD)
         } else {
-            this.$store.commit(SET_CURRENCY, CURRENCY_EUR)
+            this.$store.commit(SET_CURRENCY, CURRENCY_EURO)
         }
     },
     methods: {
         
         changeCurrency () {
             const currencyLocalStorage = localStorage.getItem('cryptoNineCurrency')
-            const newVal = currencyLocalStorage === CURRENCY_DOLAR
-                ? CURRENCY_EUR
-                : CURRENCY_DOLAR
+            const newVal = currencyLocalStorage === CURRENCY_USD
+                ? CURRENCY_EURO
+                : CURRENCY_USD
             localStorage.setItem('cryptoNineCurrency', newVal)
             this.$store.commit(SET_CURRENCY, newVal)
         },
@@ -78,9 +78,9 @@ export default {
     }
 
     .ico-currency.EUR {
-        background-image: url('../../assets/images/ico-euro.svg');
+        background-image: url('../../assets/images/ico-usd.svg');
     }
     .ico-currency.USD {
-        background-image: url('../../assets/images/ico-dolar.svg');
+        background-image: url('../../assets/images/ico-euro.svg');
     }
 </style>

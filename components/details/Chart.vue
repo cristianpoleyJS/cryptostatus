@@ -1,12 +1,11 @@
 <template>
-  <section id="coin-chart" class="w-full"/>
+  <section id="coin-chart" class="w-full" />
 </template>
 
 <script>
 import { TAB_ALL, TAB_1Y, TAB_3M, TAB_1M, TAB_7D, TAB_1D } from '@/utils/constants'
 import { createChart } from 'lightweight-charts'
-import { getAssetHistoryById } from '@/api'
-import { addDays, formatAsset } from '@/utils'
+import { subtractDays } from '@/utils'
 
 export default {
   props: {
@@ -16,7 +15,7 @@ export default {
     },
     tab: {
       type: String,
-      default: 'ALL'
+      default: TAB_ALL
     }
   },
   data () {
@@ -66,6 +65,7 @@ export default {
     }
     return {
       history: [],
+      areaSeries: {},
       themesData: {
         lightTheme: {
           chart: {
@@ -102,12 +102,10 @@ export default {
   },
   watch: {
 
-    'tab' (newVal) {
-      this.filterHistoryByTab(newVal)
-    },
-
-    'getHistoryAssetSelected' (newVal) {
-      this.history = newVal
+    'tab' (newVal, oldVal) {
+      if (oldVal) {
+        this.filterHistoryByTab(newVal)
+      }
     },
 
     '$store.getters.getTheme' (newVal) {
@@ -122,19 +120,14 @@ export default {
     }
   },
   async beforeMount () {
-    const response = await getAssetHistoryById({ id: this.asset.id })
-    const { data } = await response.json()
-    this.history = data.reduce((result, currentVal) => {
-      result.push(formatAsset(currentVal))
-      return result
-    }, [])
+    this.history = await this.$store.dispatch('actionGetHistoryById', { id: this.asset.id })
     this.printChart()
   },
   methods: {
 
     printChart () {
       this.chart = createChart(document.getElementById('coin-chart'), {
-        width: 760,
+        width: 700,
         height: 500,
         rightPriceScale: {
           borderVisible: false
@@ -147,7 +140,7 @@ export default {
           dateFormat: 'dd/MM/yyyy'
         }
       })
-      const areaSeries = this.chart.addAreaSeries({
+      this.areaSeries = this.chart.addAreaSeries({
         priceScaleId: 'left',
         lineWidth: 3
       })
@@ -156,8 +149,8 @@ export default {
         item.value = item.valuePerCurrency[this.$store.getters.getCurrency]
       })
       this.chart.applyOptions(this.themesData[`${this.$store.getters.getTheme}Theme`].chart)
-      areaSeries.applyOptions(this.themesData[`${this.$store.getters.getTheme}Theme`].series)
-      areaSeries.setData(this.history)
+      this.areaSeries.applyOptions(this.themesData[`${this.$store.getters.getTheme}Theme`].series)
+      this.areaSeries.setData(this.history)
       this.filterHistoryByTab(this.tab)
     },
 
@@ -166,27 +159,23 @@ export default {
     },
 
     filterHistoryByTab (tab) {
-      if (tab === TAB_ALL) {
-        this.chart.timeScale().resetTimeScale()
-      } else if (tab === TAB_1Y) {
-        this.chart.timeScale().setVisibleRange(this.calculateVisibleRange({ year: 1 }))
-      } else if (tab === TAB_3M) {
-        this.chart.timeScale().setVisibleRange(this.calculateVisibleRange({ month: 3 }))
-      } else if (tab === TAB_1M) {
-        this.chart.timeScale().setVisibleRange(this.calculateVisibleRange({ month: 1 }))
-      } else if (tab === TAB_7D) {
-        this.chart.timeScale().setVisibleRange(this.calculateVisibleRange({ days: 7 }))
-      } else if (tab === TAB_1D) {
-        this.chart.timeScale().setVisibleRange(this.calculateVisibleRange({ days: 1 }))
+      const methodsByTag = {
+        [TAB_ALL]: () => this.areaSeries.setData(this.history),
+        [TAB_1Y]: () => this.areaSeries.setData(this.calculateVisibleRange({ years: 1 })),
+        [TAB_3M]: () => this.areaSeries.setData(this.calculateVisibleRange({ months: 3 })),
+        [TAB_1M]: () => this.areaSeries.setData(this.calculateVisibleRange({ months: 1 })),
+        [TAB_7D]: () => this.areaSeries.setData(this.calculateVisibleRange({ days: 6 })),
+        [TAB_1D]: () => this.areaSeries.setData(this.calculateVisibleRange())
       }
+      methodsByTag[tab]()
+      this.chart.timeScale().fitContent()
     },
 
-    calculateVisibleRange (object) {
+    calculateVisibleRange (object = {}) {
       const currentDate = new Date()
-      return {
-        start: currentDate.getTime() / 1000,
-        end: addDays(currentDate, object).getTime() / 1000
-      }
+      return this.history.filter((item) => {
+        return subtractDays(currentDate, object).getTime() - new Date(item.time.year, item.time.month - 1, item.time.day + 1).getTime() <= 0
+      })
     }
   }
 }

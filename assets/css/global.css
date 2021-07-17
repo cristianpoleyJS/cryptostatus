@@ -56,8 +56,9 @@ body.light {
     --bg-header-actions: #f6f6f6;
 
     --bg-image-logo: url("../../assets/images/logo-light.svg");
+    --bg-image-avatar: url("../../assets/images/avatar-light.svg");
     --bg-ico-action-favorite: url("../../assets/images/ico-favorite-light.svg");
-    --bg-ico-theme: url('../../assets/images/ico-theme-light.svg');
+    --bg-ico-theme: url('../../assets/images/ico-theme-dark.svg');
 
     --border-general-color: #eef1f4;
     --border-input-search: #eef1f4;
@@ -80,8 +81,9 @@ body.dark {
     --bg-header-actions: #323546;
 
     --bg-image-logo: url("../../assets/images/logo-dark.svg");
+    --bg-image-avatar: url("../../assets/images/avatar-dark.svg");
     --bg-ico-action-favorite: url("../../assets/images/ico-favorite-dark.svg");
-    --bg-ico-theme: url('../../assets/images/ico-theme-dark.svg');
+    --bg-ico-theme: url('../../assets/images/ico-theme-light.svg');
 
     --border-general-color: #20232d;
     --border-input-search: rgb(36 41 52);
@@ -89,7 +91,8 @@ body.dark {
 
 @media (max-width: 1024px) {
     
-    :root {
+    body.dark,
+    body.light {
         --bg-image-logo: url("../../assets/images/mobile-logo.svg");
     }
 }
@@ -115,6 +118,7 @@ body.dark {
 
 body {
     background-color: var(--bg-color-app);
+    overflow-y: hidden;
 }
 
 a:visited {
