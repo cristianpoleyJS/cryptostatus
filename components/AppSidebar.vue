@@ -60,7 +60,7 @@ nav a {
 }
 
 nav a:hover,
-nav a.NuxtLink-exact-active {
+nav a.nuxt-link-exact-active {
   background-color: var(--bg-sidebar-hover);
 }
 

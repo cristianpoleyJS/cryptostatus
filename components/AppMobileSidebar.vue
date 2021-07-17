@@ -29,7 +29,7 @@ a {
 }
 
 a:hover,
-a.NuxtLink-exact-active {
+a.nuxt-link-exact-active {
   background-color: var(--bg-sidebar-hover);
 }
 
