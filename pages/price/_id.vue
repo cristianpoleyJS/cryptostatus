@@ -13,7 +13,7 @@ export default {
   },
   head () {
     return {
-      title: 'CryptoNine - Details coin'
+      title: 'CryptoNine - Details asset'
     }
   },
   fetchOnServer: false

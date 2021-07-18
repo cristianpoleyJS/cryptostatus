@@ -76,14 +76,12 @@ export const actions = {
     const id = assetClicked.id
     const object = {}
     object[id] = true
-    if (!currentObjectFavorites) {
-      localStorage.setItem('cryptoNineFavorites', JSON.stringify(object))
-    } else {
-      localStorage.setItem('cryptoNineFavorites', JSON.stringify({
+    localStorage.setItem('cryptoNineFavorites', currentObjectFavorites
+      ? JSON.stringify({
         ...currentObjectFavorites,
         ...object
-      }))
-    }
+      })
+      : JSON.stringify(object))
   },
 
   actionUncheckFavorite ({ commit }, assetClicked) {
