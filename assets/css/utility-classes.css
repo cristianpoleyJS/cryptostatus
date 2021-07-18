@@ -1,0 +1,104 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.display-grid {
+  display: grid;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.vertical-align-middle {
+  vertical-align: middle;
+}
+
+.bg-size-cover {
+  background-size: cover;
+}
+
+.bg-position-center {
+  background-position: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-space-evenly {
+  justify-content: space-evenly;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-start {
+  justify-content: start;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.text-xs {
+  font-size: 12px;
+  line-height: 1rem;
+}
+
+.text-2xs {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.text-base {
+  font-size: var(--base-text-font-size);
+  line-height: 24px;
+}
+
+.text-xl {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.text-2xl {
+  font-size: 32px;
+  line-height: 40px;
+}
