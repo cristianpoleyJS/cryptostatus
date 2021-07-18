@@ -16,7 +16,7 @@ describe('ListAssets.vue', () => {
 
   beforeEach(() => {
     actions = {
-      actionGetSearchAssets: jest.fn()
+      actionGetAssets: jest.fn()
     }
     getters = {
       getAssetsFinded: jest.fn()
