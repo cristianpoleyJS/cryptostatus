@@ -4,6 +4,7 @@
       :show-see-more="false"
       :assets="$store.getters.getAssetsFavorites"
       :loading="$fetchState.pending || loading"
+      in-favorites-page
       @refresh="refreshListFavorites" />
   </section>
 </template>
