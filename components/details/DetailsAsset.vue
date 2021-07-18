@@ -42,7 +42,8 @@ export default {
 </script>
 <style scoped>
   .details-asset {
-    max-width: calc(100% - 4rem);
+    max-width: calc(100% - 2rem);
+    max-height: calc(100vh - 124px);
     background-color: var(--bg-details-asset);
     border-radius: var(--border-radius-3);
     padding: 2rem;
