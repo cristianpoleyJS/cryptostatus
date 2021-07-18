@@ -16,7 +16,7 @@
       <span class="text-align-center">Action</span>
     </div>
     <div class="wrapper-list">
-      <template v-if="!loading">
+      <template v-if="!loading && !loadingFinded">
         <template v-if="assetsFiltered.length">
           <Asset
             v-for="asset in assetsFiltered"
@@ -38,6 +38,9 @@
 </template>
 
 <script>
+import { RESET_ASSETS_FINDED } from '@/store'
+import { mapGetters } from 'vuex'
+
 export default {
   props: {
     assets: {
@@ -55,16 +58,33 @@ export default {
   },
   data () {
     return {
-      inputSearch: ''
+      inputSearch: '',
+      loadingFinded: false
     }
   },
   computed: {
 
     assetsFiltered () {
-      return this.assets.filter((asset) => {
-        return asset.id?.toLowerCase().includes(this.inputSearch?.toLowerCase()) ||
-              asset.symbol?.toLowerCase().includes(this.inputSearch?.toLowerCase())
-      })
+      return this.inputSearch.length > 1
+        ? this.assetsFinded
+        : this.assets
+    },
+
+    ...mapGetters({
+      assetsFinded: 'getAssetsFinded'
+    })
+  },
+  watch: {
+    inputSearch (newVal) {
+      this.loadingFinded = true
+      if (newVal.length <= 1 && this.assetsFinded.length) {
+        this.$store.commit(RESET_ASSETS_FINDED)
+        this.loadingFinded = false
+      } else {
+        this.$store.dispatch('actionGetSearchAssets', { text: newVal }).then(() => {
+          this.loadingFinded = false
+        })
+      }
     }
   }
 }

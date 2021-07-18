@@ -4,7 +4,9 @@ import { formatAsset, formatAssets } from '@/utils'
 
 export const SET_CONVERSION_EURO_TO_DOLLAR = 'SET_CONVERSION_EURO_TO_DOLLAR'
 export const SET_ASSETS_FAVORITE = 'SET_ASSETS_FAVORITE'
+export const RESET_ASSETS_FINDED = 'RESET_ASSETS_FINDED'
 export const SET_ASSET_SELECTED = 'SET_ASSET_SELECTED'
+export const SET_ASSETS_FINDED = 'SET_ASSETS_FINDED'
 export const SET_HISTORY_BY_ID = 'SET_HISTORY_BY_ID'
 export const UNCHECK_FAVORITE = 'UNCHECK_FAVORITE'
 export const CHECK_FAVORITE = 'CHECK_FAVORITE'
@@ -15,6 +17,7 @@ export const SET_THEME = 'SET_THEME'
 
 export const state = () => ({
   assets: [],
+  assetsFinded: [],
   assetsFavorite: [],
   assetSelected: {},
   history: [],
@@ -26,6 +29,8 @@ export const state = () => ({
 export const getters = {
 
   getAssets: state => state.assets,
+
+  getAssetsFinded: state => state.assetsFinded,
 
   getAssetsFavorites: state => state.assetsFavorite,
 
@@ -51,6 +56,12 @@ export const actions = {
     await dispatch('actionGetRateEuro')
     const { data } = await getAssets({ limit, offset })
     commit(SET_ASSETS, data)
+  },
+
+  async actionGetSearchAssets ({ commit, dispatch }, { text }) {
+    await dispatch('actionGetRateEuro')
+    const { data } = await getAssets({ text })
+    commit(SET_ASSETS_FINDED, data)
   },
 
   async actionGetFavoritesAssets ({ commit, dispatch }) {
@@ -128,5 +139,11 @@ export const mutations = {
   },
   [SET_HISTORY_BY_ID]: (state, history) => {
     state.history = formatAssets(history, state.conversionEuroToUsd)
+  },
+  [SET_ASSETS_FINDED]: (state, assetsFinded) => {
+    state.assetsFinded = formatAssets(assetsFinded, state.conversionEuroToUsd)
+  },
+  [RESET_ASSETS_FINDED]: (state) => {
+    state.assetsFinded = []
   }
 }

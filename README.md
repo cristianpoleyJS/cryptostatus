@@ -40,10 +40,11 @@ Add caching | ✅ | I use localStorage to save favorites, theme and currency  |
 Check and uncheck coins as favorites to view it in a favorites view | ✅ |  🆕 |
 Select date ranges to display on the graph | ✅ |  🆕 |
 Switching between dark and light themes | ✅ |  🆕 |
-Asset finder | ✅ |  🆕 |
+Asset finder | ✅ | 🆕&nbsp;&nbsp;Search engine using the API |
 Use `new WebSocket("wss://ws.coincap.io/prices?assets=${assets}\")` for Realtime prices | ❌ |  🆕&nbsp;&nbsp; I would have done it in the Asset detail view, so that even the graph is updated in real time, but I didn't have time. I developed refresh button |
 Continuous Deployment | ✅ | 🆕&nbsp;&nbsp; I use Vercel as hosting, and I have hooks configured on the main branches to run a deployment pipeline |
 Responsive | ✅ | 🆕&nbsp;&nbsp; I have developed a different layout for when accessed directly from the mobile |
+Image asset | ✅ | 🆕&nbsp;&nbsp; The images of the assets I capture from a resource on another website, when it doesn't find an image for that asset, it paints a default image. I have searched if there is any API or public resource for this but have not found anything |
 
 # Project code 👨‍💻
 
