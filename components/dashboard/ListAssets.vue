@@ -31,7 +31,8 @@
       v-if="showSeeMore && inputSearch.length === 0"
       class="see-more-button cursor-pointer display-flex justify-center align-items-center w-full"
       @click="$emit('see-more')">
-      See more <img src="@/assets/images/ico-see-more.svg">
+      See more
+      <img src="@/assets/images/ico-see-more.svg">
     </button>
   </section>
 </template>
@@ -61,8 +62,8 @@ export default {
 
     assetsFiltered () {
       return this.assets.filter((asset) => {
-        return asset.id.includes(this.inputSearch) ||
-              asset.symbol.includes(this.inputSearch)
+        return asset.id?.toLowerCase().includes(this.inputSearch?.toLowerCase()) ||
+              asset.symbol?.toLowerCase().includes(this.inputSearch?.toLowerCase())
       })
     }
   }
@@ -108,9 +109,10 @@ export default {
 
     button.see-more-button {
       height: 56px;
-      font-weight: var(--font-weight-medium);
+      min-width: 600px;
       background-color: var(--bg-list-assets);
       color: var(--second-text-color);
+      font-weight: var(--font-weight-medium);
     }
     button.see-more-button img {
       width: 14px;

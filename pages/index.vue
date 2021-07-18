@@ -39,6 +39,7 @@ export default {
     async refreshListAssets () {
       this.loading = true
       this.$store.commit(RESET_ASSETS)
+      this.offset = 0
       await this.dispatchActionGetAssets()
       this.loading = false
     },

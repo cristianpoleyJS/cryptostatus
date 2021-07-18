@@ -39,7 +39,7 @@ export default {
 
   // Base route app by default
   router: {
-    middleware: 'mobile'
+    middleware: ['mobile']
   },
 
   // Styling for loading app

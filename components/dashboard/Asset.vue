@@ -47,7 +47,7 @@ export default {
 
   .symbol {
     color: var(--third-text-color);
-    margin-left: 1rem;
+    margin-left: 12px;
     font-weight: var(--font-weight-regular);
   }
 </style>

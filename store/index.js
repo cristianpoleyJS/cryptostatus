@@ -20,7 +20,7 @@ export const state = () => ({
   history: [],
   theme: THEME_LIGHT,
   currency: CURRENCY_USD,
-  conversionEuroToUsd: 0.85
+  conversionEuroToUsd: 0
 })
 
 export const getters = {
@@ -39,9 +39,12 @@ export const getters = {
 }
 export const actions = {
 
-  async actionGetRateEuro ({ commit }) {
-    const { data } = await getRates({ id: 'euro' })
-    commit(SET_CONVERSION_EURO_TO_DOLLAR, 1 / data.rateUsd)
+  async actionGetRateEuro ({ commit, state }) {
+    // Avoid making a call to get the euro value if it is already updated in the state.
+    if (state.conversionEuroToUsd === 0) {
+      const { data } = await getRates({ id: 'euro' })
+      commit(SET_CONVERSION_EURO_TO_DOLLAR, 1 / data.rateUsd)
+    }
   },
 
   async actionGetAssets ({ commit, dispatch }, { limit, offset }) {
