@@ -52,16 +52,13 @@ export const actions = {
     }
   },
 
-  async actionGetAssets ({ commit, dispatch }, { limit, offset }) {
+  async actionGetAssets ({ commit, dispatch }, { limit, offset, text }) {
     await dispatch('actionGetRateEuro')
-    const { data } = await getAssets({ limit, offset })
-    commit(SET_ASSETS, data)
-  },
-
-  async actionGetSearchAssets ({ commit, dispatch }, { text }) {
-    await dispatch('actionGetRateEuro')
-    const { data } = await getAssets({ text })
-    commit(SET_ASSETS_FINDED, data)
+    const { data } = await getAssets({ limit, offset, text })
+    // If there is text it means that you are looking for an asset
+    text
+      ? commit(SET_ASSETS_FINDED, data)
+      : commit(SET_ASSETS, data)
   },
 
   async actionGetFavoritesAssets ({ commit, dispatch }) {

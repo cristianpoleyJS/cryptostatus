@@ -5,7 +5,7 @@
 
       <div class="display-flex">
         <InputSearch v-model="inputSearch" />
-        <ButtonRefresh @click="$emit('refresh')" />
+        <ButtonRefresh @click="$emit('refresh', { inputValue: inputSearch, searchingAssets: inputSearch.length > 1 })" />
       </div>
     </div>
     <div class="list-assets-header display-grid align-items-center">
@@ -54,17 +54,28 @@ export default {
     showSeeMore: {
       type: Boolean,
       default: true
+    },
+    inFavoritesPage: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
     return {
       inputSearch: '',
-      loadingFinded: false
+      loadingFinded: false,
+      timeout: ''
     }
   },
   computed: {
 
     assetsFiltered () {
+      if (this.inFavoritesPage) {
+        return this.assets.filter((asset) => {
+          return asset.id?.toLowerCase().includes(this.inputSearch?.toLowerCase()) ||
+              asset.symbol?.toLowerCase().includes(this.inputSearch?.toLowerCase())
+        })
+      }
       return this.inputSearch.length > 1
         ? this.assetsFinded
         : this.assets
@@ -76,14 +87,20 @@ export default {
   },
   watch: {
     inputSearch (newVal) {
-      this.loadingFinded = true
-      if (newVal.length <= 1 && this.assetsFinded.length) {
-        this.$store.commit(RESET_ASSETS_FINDED)
-        this.loadingFinded = false
-      } else {
-        this.$store.dispatch('actionGetSearchAssets', { text: newVal }).then(() => {
-          this.loadingFinded = false
-        })
+      if (!this.inFavoritesPage) {
+        if (newVal.length <= 1 && this.assetsFinded.length) {
+          this.$store.commit(RESET_ASSETS_FINDED)
+        } else {
+          clearTimeout(this.timeout)
+          this.loadingFinded = true
+
+          this.timeout = setTimeout(() => {
+            this.$store.dispatch('actionGetAssets', { limit: 20, offset: 0, text: newVal }).then(() => {
+              this.loadingFinded = false
+            })
+            clearTimeout(this.timeout)
+          }, 500)
+        }
       }
     }
   }
