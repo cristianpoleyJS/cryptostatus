@@ -1,20 +1,8 @@
 <template>
   <span
     class="bg-size-cover display-inline-block bg-size-cover vertical-align-middle bg-position-center w-full"
-    :style="{...styleProp}"
     @click="$emit('click')" />
 </template>
-
-<script>
-export default {
-  props: {
-    styleProp: {
-      type: Object,
-      default: () => {}
-    }
-  }
-}
-</script>
 
 <style scoped>
 
