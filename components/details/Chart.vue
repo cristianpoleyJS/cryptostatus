@@ -71,7 +71,7 @@ export default {
           chart: {
             ...chartOptions,
             layout: {
-              backgroundColor: '#f6f6f6',
+              backgroundColor: '#fff',
               lineColor: '#2B2B43',
               textColor: '#D9D9D9'
             },

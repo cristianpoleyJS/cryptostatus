@@ -8,17 +8,11 @@
     font-weight: 500;
     src: local("Graphik"), url(../fonts/Graphik-Medium.ttf) format("truetype");
 }
-@font-face {
-    font-family: "Graphik";
-    font-weight: 700;
-    src: local("Graphik"), url(../fonts/Graphik-Bold.ttf) format("truetype");
-}
 
 :root {
     --primary-font-family: Graphik;
     --font-weight-regular: 400;
     --font-weight-medium: 500;
-    --font-weight-bold: 700;
     --base-text-font-size: 1rem;
 
     --second-text-color: #2d68ed;
@@ -36,7 +30,7 @@
     --border-radius-100: 100px;
     --border-radius-100-percent: 100%;
 
-    --grid-template-columns-list: 5fr 50fr 20fr 15fr 10fr;
+    --grid-template-columns-list: 5fr 45fr 20fr 20fr 10fr;
 }
 
 body.light {
@@ -59,6 +53,7 @@ body.light {
     --bg-image-avatar: url("../../assets/images/avatar-light.svg");
     --bg-ico-action-favorite: url("../../assets/images/ico-favorite-light.svg");
     --bg-ico-theme: url('../../assets/images/ico-theme-dark.svg');
+    --bg-ico-refresh: url('../../assets/images/ico-refresh-dark.svg');
 
     --border-general-color: #eef1f4;
     --border-input-search: #eef1f4;
@@ -84,6 +79,7 @@ body.dark {
     --bg-image-avatar: url("../../assets/images/avatar-dark.svg");
     --bg-ico-action-favorite: url("../../assets/images/ico-favorite-dark.svg");
     --bg-ico-theme: url('../../assets/images/ico-theme-light.svg');
+    --bg-ico-refresh: url('../../assets/images/ico-refresh-light.svg');
 
     --border-general-color: #20232d;
     --border-input-search: rgb(36 41 52);
@@ -121,16 +117,11 @@ body {
     overflow-y: hidden;
 }
 
-a:visited {
-    color: pink;
-}
-
-
-  /** SCSS Para el scroll */
+/** SCSS Para el scroll */
 *::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 8px;
-    height: 8px;
+    width: 4px;
+    height: 4px;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -145,11 +136,6 @@ a:visited {
 
 *::-webkit-scrollbar-thumb:hover {
     border-radius: var(--border-radius-12);
-    border: 4px solid rgba(255, 255, 255, 0);
-    background-clip: content-box;
-    background-color: #bdbdbd;
-}
-
-*::-webkit-scrollbar-corner {
-    background-color: transparent;
+    border: 6px solid rgba(255, 255, 255, 0);
+    background: #bdbdbd;
 }

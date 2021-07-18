@@ -6,10 +6,13 @@ const REQUEST_OPTIONS = {
 const API_URL = 'https://api.coincap.io/v2'
 // const API_WEB_SOCKET = 'wss://ws.coincap.io/prices'
 
-export const getAssets = async ({ limit = 20, offset = 0, ids = '' }) => {
+export const getAssets = async ({ limit = 20, offset = 0, ids = '', text = '' }) => {
   let path = `${API_URL}/assets?limit=${limit}&offset=${offset}`
   if (ids) {
     path += `&ids=${ids}`
+  }
+  if (text) {
+    path += `&search=${text}`
   }
   const response = await fetch(path, REQUEST_OPTIONS)
   return response.json()

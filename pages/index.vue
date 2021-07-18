@@ -1,9 +1,10 @@
 <template>
   <section>
     <ListAssets
-      :loading="$fetchState.pending"
+      :loading="$fetchState.pending || loading"
       :assets="$store.getters.getAssets"
-      @see-more="seeMore()" />
+      @see-more="seeMore"
+      @refresh="refreshListAssets" />
   </section>
 </template>
 
@@ -14,7 +15,8 @@ export default {
   data () {
     return {
       limit: 20,
-      offset: 0
+      offset: 0,
+      loading: false
     }
   },
   async fetch () {
@@ -32,6 +34,14 @@ export default {
 
     async dispatchActionGetAssets () {
       await this.$store.dispatch('actionGetAssets', { offset: this.offset })
+    },
+
+    async refreshListAssets () {
+      this.loading = true
+      this.$store.commit(RESET_ASSETS)
+      this.offset = 0
+      await this.dispatchActionGetAssets()
+      this.loading = false
     },
 
     seeMore () {

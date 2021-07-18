@@ -4,7 +4,9 @@ import { formatAsset, formatAssets } from '@/utils'
 
 export const SET_CONVERSION_EURO_TO_DOLLAR = 'SET_CONVERSION_EURO_TO_DOLLAR'
 export const SET_ASSETS_FAVORITE = 'SET_ASSETS_FAVORITE'
+export const RESET_ASSETS_FINDED = 'RESET_ASSETS_FINDED'
 export const SET_ASSET_SELECTED = 'SET_ASSET_SELECTED'
+export const SET_ASSETS_FINDED = 'SET_ASSETS_FINDED'
 export const SET_HISTORY_BY_ID = 'SET_HISTORY_BY_ID'
 export const UNCHECK_FAVORITE = 'UNCHECK_FAVORITE'
 export const CHECK_FAVORITE = 'CHECK_FAVORITE'
@@ -15,17 +17,20 @@ export const SET_THEME = 'SET_THEME'
 
 export const state = () => ({
   assets: [],
+  assetsFinded: [],
   assetsFavorite: [],
   assetSelected: {},
   history: [],
   theme: THEME_LIGHT,
   currency: CURRENCY_USD,
-  conversionEuroToUsd: 0.85
+  conversionEuroToUsd: 0
 })
 
 export const getters = {
 
   getAssets: state => state.assets,
+
+  getAssetsFinded: state => state.assetsFinded,
 
   getAssetsFavorites: state => state.assetsFavorite,
 
@@ -39,15 +44,24 @@ export const getters = {
 }
 export const actions = {
 
-  async actionGetRateEuro ({ commit }) {
-    const { data } = await getRates({ id: 'euro' })
-    commit(SET_CONVERSION_EURO_TO_DOLLAR, 1 / data.rateUsd)
+  async actionGetRateEuro ({ commit, state }) {
+    // Avoid making a call to get the euro value if it is already updated in the state.
+    if (state.conversionEuroToUsd === 0) {
+      const { data } = await getRates({ id: 'euro' })
+      commit(SET_CONVERSION_EURO_TO_DOLLAR, 1 / data.rateUsd)
+    }
   },
 
   async actionGetAssets ({ commit, dispatch }, { limit, offset }) {
     await dispatch('actionGetRateEuro')
     const { data } = await getAssets({ limit, offset })
     commit(SET_ASSETS, data)
+  },
+
+  async actionGetSearchAssets ({ commit, dispatch }, { text }) {
+    await dispatch('actionGetRateEuro')
+    const { data } = await getAssets({ text })
+    commit(SET_ASSETS_FINDED, data)
   },
 
   async actionGetFavoritesAssets ({ commit, dispatch }) {
@@ -118,11 +132,18 @@ export const mutations = {
   },
   [RESET_ASSETS]: (state) => {
     state.assets = []
+    state.assetsFavorite = []
   },
   [SET_CONVERSION_EURO_TO_DOLLAR]: (state, value) => {
     state.conversionEuroToUsd = value
   },
   [SET_HISTORY_BY_ID]: (state, history) => {
     state.history = formatAssets(history, state.conversionEuroToUsd)
+  },
+  [SET_ASSETS_FINDED]: (state, assetsFinded) => {
+    state.assetsFinded = formatAssets(assetsFinded, state.conversionEuroToUsd)
+  },
+  [RESET_ASSETS_FINDED]: (state) => {
+    state.assetsFinded = []
   }
 }

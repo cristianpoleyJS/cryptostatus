@@ -17,7 +17,7 @@
   height: 56px;
   left: 0;
   z-index: 1;
-  position: absolute;
+  position: fixed;
   flex-direction: row;
 }
 

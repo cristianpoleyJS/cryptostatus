@@ -13,45 +13,51 @@
 import { THEME_DARK, THEME_LIGHT, CURRENCY_EURO, CURRENCY_USD } from '@/utils/constants'
 import { SET_CURRENCY, SET_THEME } from '@/store'
 
+const CURRENCY_ITEM_STORAGE = 'cryptoNineCurrency'
+const THEME_ITEM_STORAGE = 'cryptoNineTheme'
+
 export default {
   beforeMount () {
-    const themeLocalStorage = localStorage.getItem('cryptoNineTheme')
+    const themeLocalStorage = localStorage.getItem(THEME_ITEM_STORAGE)
     if (!themeLocalStorage) {
-      localStorage.setItem('cryptoNineTheme', THEME_LIGHT)
-      document.body.className = THEME_LIGHT
-      this.$store.commit(SET_THEME, THEME_LIGHT)
+      this.setThemeStoreAndStorage(THEME_LIGHT)
     } else {
       document.body.className = themeLocalStorage
       this.$store.commit(SET_THEME, themeLocalStorage)
     }
 
-    const currencyLocalStorage = localStorage.getItem('cryptoNineCurrency')
-    if (!currencyLocalStorage) {
-      localStorage.setItem('cryptoNineCurrency', CURRENCY_USD)
-      this.$store.commit(SET_CURRENCY, CURRENCY_USD)
-    } else {
-      this.$store.commit(SET_CURRENCY, CURRENCY_EURO)
-    }
+    const currencyLocalStorage = localStorage.getItem(CURRENCY_ITEM_STORAGE)
+    currencyLocalStorage
+      ? this.$store.commit(SET_CURRENCY, currencyLocalStorage)
+      : this.setCurrencyStoreAndStorage(CURRENCY_USD)
   },
   methods: {
 
-    changeCurrency () {
-      const currencyLocalStorage = localStorage.getItem('cryptoNineCurrency')
-      const newVal = currencyLocalStorage === CURRENCY_USD
-        ? CURRENCY_EURO
-        : CURRENCY_USD
-      localStorage.setItem('cryptoNineCurrency', newVal)
-      this.$store.commit(SET_CURRENCY, newVal)
-    },
-
     changeTheme () {
-      const themeLocalStorage = localStorage.getItem('cryptoNineTheme')
+      const themeLocalStorage = localStorage.getItem(THEME_ITEM_STORAGE)
       const newVal = themeLocalStorage === THEME_LIGHT
         ? THEME_DARK
         : THEME_LIGHT
-      localStorage.setItem('cryptoNineTheme', newVal)
-      document.body.className = newVal
-      this.$store.commit(SET_THEME, newVal)
+      this.setThemeStoreAndStorage(newVal)
+    },
+
+    changeCurrency () {
+      const currencyLocalStorage = localStorage.getItem(CURRENCY_ITEM_STORAGE)
+      const newVal = currencyLocalStorage === CURRENCY_USD
+        ? CURRENCY_EURO
+        : CURRENCY_USD
+      this.setCurrencyStoreAndStorage(newVal)
+    },
+
+    setThemeStoreAndStorage (val) {
+      localStorage.setItem(THEME_ITEM_STORAGE, val)
+      document.body.className = val
+      this.$store.commit(SET_THEME, val)
+    },
+
+    setCurrencyStoreAndStorage (val) {
+      localStorage.setItem(CURRENCY_ITEM_STORAGE, val)
+      this.$store.commit(SET_CURRENCY, val)
     }
   }
 }
@@ -77,10 +83,10 @@ export default {
         background-image: var(--bg-ico-theme);
     }
 
-    .ico-currency.EUR {
-        background-image: url('../../assets/images/ico-usd.svg');
-    }
     .ico-currency.USD {
         background-image: url('../../assets/images/ico-euro.svg');
+    }
+    .ico-currency.EUR {
+        background-image: url('../../assets/images/ico-usd.svg');
     }
 </style>
