@@ -42,7 +42,6 @@ export default {
 
   // Base route app by default
   router: {
-    base: '/dashboard',
     middleware: 'mobile'
   },
 

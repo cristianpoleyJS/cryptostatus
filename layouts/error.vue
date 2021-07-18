@@ -11,12 +11,6 @@
   </section>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
 <style scoped>
     .error-page {
         grid-gap: 4rem;

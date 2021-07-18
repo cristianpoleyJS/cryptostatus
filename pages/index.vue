@@ -22,7 +22,7 @@ export default {
   },
   head () {
     return {
-      title: 'CryptoNine - Dashboard'
+      title: 'CryptoNine'
     }
   },
   beforeDestroy () {
