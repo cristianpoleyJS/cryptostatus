@@ -1,9 +1,99 @@
-# vite-example
+<div align="center">
+  <img src="./docs/logo.svg" width="300px">
+  <h1>CryptoNine - Frontend Challenge</h1>
+</div>
 
-## Build Setup
+> CryptoNine is a specific solution for code testing presented by Ninety Nine for the position of Senior Frontend Engineer.
+
+### [APP in Vercel](https://cryptonine.vercel.app)
+
+**Table of contents**
+
+- [Features](#features)
+- [Project code](#project-code-👨%E2%80%8D💻)
+- [Screenshots](#screenshots)
+  - [Desktop](#desktop)
+  - [Mobile](#mobile)
+- [Extra](#extra)
+  - [Built with](#built-with)
+  - [Commitlint](#commitlint)
+  - [Quick start](#quick-start)
+- [Links](#links)
+- [Author](#author)
+
+
+# Features
+
+Create a simple flow for users to navigate and see information of Cryptocurrencies.
+
+To obtain the raw data, you will be able to use Coincap, an open data API that provides lots of info about crypto: https://docs.coincap.io/
+
+
+Features | Status | Observation |
+:------------ | :-------------| :-------------|
+A page that displays all cryptos available in the API (for example using rows or tiles). Include at least for each crypto the name and symbol. You can create a backend service from where to query the API, or just get the info directly from the front end| ✅ |  |
+When user clicks on a crypto should navigate to a new page displaying more info of the crypto, including at least name and symbol, market cap and last price in USD | ✅ |  |
+Add a basic layer of tests you would consider important (no need to be comprehensive, we just want to understand how you would structure them) | ✅ | I have added some tests for components and store. Although I have not been able to finish them all, I think there is variety. I would have liked to add Cypress for e2e since I have more experience than with unit tests |
+Add a graph to the crypto page with historic prices | ✅ |  |
+In the crypto page also display the price in Euros | ✅ |  |
+Add caching | ✅ | I use localStorage to save favorites, theme and currency  |
+Check and uncheck coins as favorites to view it in a favorites view | ✅ |  🆕 |
+Select date ranges to display on the graph | ✅ |  🆕 |
+Switching between dark and light themes | ✅ |  🆕 |
+Asset finder | ✅ | 🆕&nbsp;&nbsp;Search engine using the API |
+Use `new WebSocket("wss://ws.coincap.io/prices?assets=${assets}\")` for Realtime prices | ❌ |  🆕&nbsp;&nbsp; I would have done it in the Asset detail view, so that even the graph is updated in real time, but I didn't have time. I developed refresh button |
+Continuous Deployment | ✅ | 🆕&nbsp;&nbsp; I use Vercel as hosting, and I have hooks configured on the main branches to run a deployment pipeline |
+Responsive | ✅ | 🆕&nbsp;&nbsp; I have developed a different layout for when accessed directly from the mobile |
+Image asset | ✅ | 🆕&nbsp;&nbsp; The images of the assets I capture from a resource on another website, when it doesn't find an image for that asset, it paints a default image. I have searched if there is any API or public resource for this but have not found anything |
+
+# Project code 👨‍💻
+
+This project has been developed with **NuxtJS**. My main experience in a framework is with Vue, that's why I decided to use NuxtJS (an open framework based on Vue inspired by NextJS). Also, I think that for an application that would be used by any user and would be public to the internet, SSR applications are better for SEO since it makes it easier for Google's crawler to read.
+
+**Vuex**
+
+I initialize and use store to show my knowledge in a Flux architecture.
+
+**Middleware**
+
+Middleware allows you to define custom functions that can be executed before a page or group of pages (layout) is displayed. I created one to check if the user is visiting the site from a mobile device, and if so show a different layout.
+
+**Local Storage**
+
+To save the theme, currency and favorites data I use localStorage. Maybe I could have used indexDB since it is a better optimized browser database than localStorage (Web Storage) but since the data are few and it is less complex, I decided to store it here.
+
+# Screenshots
+
+## Desktop
+<img src="./docs/screenshot.png" width="600px">
+
+## Mobile
+<img src="./docs/mobile-screenshot.png" width="250px">
+
+# Extra
+
+## Commitlint
+
+This project follows the [commitlint](https://github.com/conventional-changelog/commitlint) guidelines.
+## Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Utility classes
+- Eslint
+- [NuxtJS](https://nuxtjs.org/) - Framework
+- [Vue Jest](https://vue-test-utils.vuejs.org/installation/) - Testing Library
+- [Lightweight Charts](https://github.com/tradingview/lightweight-charts) -  Library for Graph
+
+## Quick start
 
 ```bash
-# install dependencies
+$ git clone git@gitlab.com:cristianpoleyjs/cryptonine.git
+$ cd cryptonine/
+
+# install dependencies (It is recommended to use the latest LTS version)
 $ npm install
 
 # serve with hot reload at localhost:3000
@@ -17,53 +107,12 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+## Links
 
-## Special Directories
+- Solution URL: [APP Code](https://gitlab.com/cristianpoleyjs/cryptonine)
+- Live Site URL: [APP in Vercel](https://cryptonine.vercel.app/)
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+## Author
 
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+- Website - [Cristian Poley](https://www.cristianpoley.com)
+- GitHub - [cristianpoleyJS](https://github.com/cristianpoleyJS)
