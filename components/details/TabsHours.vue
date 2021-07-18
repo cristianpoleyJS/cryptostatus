@@ -37,8 +37,7 @@ export default {
     ul {
         grid-gap: 1rem;
         margin-top: 1rem;
-        max-width: 300px;
-        max-width: fit-content;
+        width: 306px;
         background-color: var(--bg-tabs);
         height: 36px;
         border-radius: var(--border-radius-3);

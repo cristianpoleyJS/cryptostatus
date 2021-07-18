@@ -1,10 +1,13 @@
 <template>
   <section>
-    <h3 class="align-items-center display-flex justify-space-between text-xl">
-      Assets
+    <div class="list-assets-title align-items-center display-flex justify-space-between text-xl">
+      <h3>Assets</h3>
 
-      <InputSearch v-model="inputSearch" />
-    </h3>
+      <div class="display-flex">
+        <InputSearch v-model="inputSearch" />
+        <ButtonRefresh @click="$emit('refresh')" />
+      </div>
+    </div>
     <div class="list-assets-header display-grid align-items-center">
       <span>#</span>
       <span>Coin name</span>
@@ -12,21 +15,21 @@
       <span class="text-align-center">Change 24hr</span>
       <span class="text-align-center">Action</span>
     </div>
-    <div v-if="!loading">
-      <template v-if="assetsFiltered.length">
-        <Asset
-          v-for="asset in assetsFiltered"
-          :key="asset.id"
-          :asset="asset" />
+    <div class="wrapper-list">
+      <template v-if="!loading">
+        <template v-if="assetsFiltered.length">
+          <Asset
+            v-for="asset in assetsFiltered"
+            :key="asset.id"
+            :asset="asset" />
+        </template>
+        <EmptyResults v-else />
       </template>
-      <EmptyResults v-else />
-    </div>
-    <div v-else>
-      <SkeletonPlaceholderListAssets :length="20" />
+      <SkeletonPlaceholderListAssets v-else :length="10" />
     </div>
     <button
-      v-if="showSeeMore"
-      class="cursor-pointer display-flex justify-center align-items-center w-full"
+      v-if="showSeeMore && inputSearch.length === 0"
+      class="see-more-button cursor-pointer display-flex justify-center align-items-center w-full"
       @click="$emit('see-more')">
       See more <img src="@/assets/images/ico-see-more.svg">
     </button>
@@ -74,18 +77,22 @@ export default {
         overflow-x: auto;
     }
 
-    h3 {
+    div.list-assets-title {
         padding: 0 2rem;
         height: 54px;
         grid-template-columns: 20fr 80fr;
+    }
+    div.list-assets-title h3 {
         font-size: 18px;
         font-weight: var(--font-weight-medium);
     }
-    section div {
+
+    div.wrapper-list {
         min-width: 600px;
     }
 
-    section div.list-assets-header {
+    div.list-assets-header {
+        min-width: 600px;
         border-top: 1px solid var(--border-general-color);
         border-bottom: 1px solid var(--border-general-color);
         padding: 0 2rem;
@@ -94,22 +101,22 @@ export default {
         background-color: var(--bg-list-header);
         overflow-x: auto;
     }
-    section div.list-assets-header span {
+    div.list-assets-header span {
         font-weight: var(--font-weight-medium);
         color: var(--third-text-color);
     }
 
-    button {
+    button.see-more-button {
       height: 56px;
       font-weight: var(--font-weight-medium);
       background-color: var(--bg-list-assets);
       color: var(--second-text-color);
     }
-    button img {
+    button.see-more-button img {
       width: 14px;
       margin-left: 1rem;
     }
-    button:hover {
+    button.see-more-button:hover {
       background-color: var(--bg-list-asset-hover);
     }
 </style>

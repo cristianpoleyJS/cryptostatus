@@ -41,7 +41,7 @@ Check and uncheck coins as favorites to view it in a favorites view | ✅ |  �
 Select date ranges to display on the graph | ✅ |  🆕 |
 Switching between dark and light themes | ✅ |  🆕 |
 Asset finder | ✅ |  🆕 |
-Use `new WebSocket("wss://ws.coincap.io/prices?assets=${assets}\")` for Realtime prices | ❌ |  🆕&nbsp;&nbsp; I would have done it in the Asset detail view, so that even the graph is updated in real time, but I didn't have time|
+Use `new WebSocket("wss://ws.coincap.io/prices?assets=${assets}\")` for Realtime prices | ❌ |  🆕&nbsp;&nbsp; I would have done it in the Asset detail view, so that even the graph is updated in real time, but I didn't have time. I developed refresh button |
 Continuous Deployment | ✅ | 🆕&nbsp;&nbsp; I use Vercel as hosting, and I have hooks configured on the main branches to run a deployment pipeline |
 Responsive | ✅ | 🆕&nbsp;&nbsp; I have developed a different layout for when accessed directly from the mobile |
 
@@ -80,6 +80,7 @@ This project follows the [commitlint](https://github.com/conventional-changelog/
 - CSS custom properties
 - Flexbox
 - CSS Grid
+- Utility classes
 - Eslint
 - [NuxtJS](https://nuxtjs.org/) - Framework
 - [Vue Jest](https://vue-test-utils.vuejs.org/installation/) - Testing Library

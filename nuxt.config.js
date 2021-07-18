@@ -37,9 +37,6 @@ export default {
     }]
   ],
 
-  // New path for build
-  buildDir: 'nuxt-dist',
-
   // Base route app by default
   router: {
     middleware: 'mobile'

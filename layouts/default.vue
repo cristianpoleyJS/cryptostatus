@@ -16,7 +16,7 @@
     }
 
     .router-view {
-      padding: 2rem;
+      padding: 1rem;
       max-height: calc(100vh - 66px);
       overflow-y: auto;
     }

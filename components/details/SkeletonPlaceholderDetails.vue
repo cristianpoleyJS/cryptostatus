@@ -6,12 +6,16 @@
       <SkeletonPlaceholder variant="text" :width="40" />
       <SkeletonPlaceholder variant="text" :width="80" />
     </div>
-    <SkeletonPlaceholder variant="rect" :width="800" :height="600" />
-    <SkeletonPlaceholder variant="rect" :width="800" :height="100" />
+    <SkeletonPlaceholder variant="rect" :width="700" :height="550" />
+    <SkeletonPlaceholder variant="rect" :width="700" :height="100" style="margin-top: 1rem" />
   </section>
 </template>
 
 <style scoped>
+  section {
+    background-color: var(--bg-details-asset);
+    margin: 1rem;
+  }
   div {
     grid-gap: 1rem;
     margin-bottom: 2rem;

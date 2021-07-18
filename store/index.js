@@ -118,6 +118,7 @@ export const mutations = {
   },
   [RESET_ASSETS]: (state) => {
     state.assets = []
+    state.assetsFavorite = []
   },
   [SET_CONVERSION_EURO_TO_DOLLAR]: (state, value) => {
     state.conversionEuroToUsd = value

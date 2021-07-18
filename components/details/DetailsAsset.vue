@@ -11,6 +11,7 @@
       <Favorite
         :asset-clicked="asset"
         :is-favorite="asset.favorite" />
+      <ButtonRefresh @click="$emit('refresh')" />
     </div>
 
     <TabsHours
@@ -46,12 +47,12 @@ export default {
     max-height: calc(100vh - 124px);
     background-color: var(--bg-details-asset);
     border-radius: var(--border-radius-3);
-    padding: 2rem;
-    margin: 2rem 0 0 2rem;
+    margin: 1rem;
   }
 
   .details-asset-header {
     grid-gap: 1rem;
+    white-space: nowrap;
   }
 
   .details-asset-header .symbol {
@@ -63,5 +64,11 @@ export default {
   img {
     width: 40px;
     height: 40px;
+  }
+
+  @media (max-width: 460px) {
+    .details-asset {
+      max-width: calc(100vw - 1rem)
+    }
   }
 </style>
