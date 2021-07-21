@@ -4,9 +4,9 @@ import { formatAsset, formatAssets } from '@/utils'
 
 export const SET_CONVERSION_EURO_TO_DOLLAR = 'SET_CONVERSION_EURO_TO_DOLLAR'
 export const SET_ASSETS_FAVORITE = 'SET_ASSETS_FAVORITE'
-export const RESET_ASSETS_FINDED = 'RESET_ASSETS_FINDED'
+export const RESET_ASSETS_FOUND = 'RESET_ASSETS_FOUND'
 export const SET_ASSET_SELECTED = 'SET_ASSET_SELECTED'
-export const SET_ASSETS_FINDED = 'SET_ASSETS_FINDED'
+export const SET_ASSETS_FOUND = 'SET_ASSETS_FOUND'
 export const SET_HISTORY_BY_ID = 'SET_HISTORY_BY_ID'
 export const UNCHECK_FAVORITE = 'UNCHECK_FAVORITE'
 export const CHECK_FAVORITE = 'CHECK_FAVORITE'
@@ -17,7 +17,7 @@ export const SET_THEME = 'SET_THEME'
 
 export const state = () => ({
   assets: [],
-  assetsFinded: [],
+  assetsFound: [],
   assetsFavorite: [],
   assetSelected: {},
   history: [],
@@ -30,7 +30,7 @@ export const getters = {
 
   getAssets: state => state.assets,
 
-  getAssetsFinded: state => state.assetsFinded,
+  getAssetsFound: state => state.assetsFound,
 
   getAssetsFavorites: state => state.assetsFavorite,
 
@@ -57,7 +57,7 @@ export const actions = {
     const { data } = await getAssets({ limit, offset, text })
     // If there is text it means that you are looking for an asset
     text
-      ? commit(SET_ASSETS_FINDED, data)
+      ? commit(SET_ASSETS_FOUND, data)
       : commit(SET_ASSETS, data)
   },
 
@@ -137,10 +137,10 @@ export const mutations = {
   [SET_HISTORY_BY_ID]: (state, history) => {
     state.history = formatAssets(history, state.conversionEuroToUsd)
   },
-  [SET_ASSETS_FINDED]: (state, assetsFinded) => {
-    state.assetsFinded = formatAssets(assetsFinded, state.conversionEuroToUsd)
+  [SET_ASSETS_FOUND]: (state, assetsFound) => {
+    state.assetsFound = formatAssets(assetsFound, state.conversionEuroToUsd)
   },
-  [RESET_ASSETS_FINDED]: (state) => {
-    state.assetsFinded = []
+  [RESET_ASSETS_FOUND]: (state) => {
+    state.assetsFound = []
   }
 }
