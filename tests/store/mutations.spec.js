@@ -10,8 +10,8 @@ import {
 import {
   mutations,
   SET_ASSETS,
-  RESET_ASSETS_FINDED,
-  SET_ASSETS_FINDED,
+  RESET_ASSETS_FOUND,
+  SET_ASSETS_FOUND,
   SET_ASSETS_FAVORITE,
   SET_ASSET_SELECTED,
   SET_CURRENCY,
@@ -28,7 +28,7 @@ describe('Mutations Vuex', () => {
   beforeEach(() => {
     state = {
       assets: [],
-      assetsFinded: [],
+      assetsFound: [],
       assetsFavorite: [],
       assetSelected: {},
       history: [],
@@ -42,10 +42,10 @@ describe('Mutations Vuex', () => {
     mutations[SET_ASSETS](state, [exampleAsset])
     expect(state.assets).toHaveLength(1)
   })
-  it('set assets "state.assetsFinded" with [exampleAsset]', () => {
-    expect(state.assetsFinded).toHaveLength(0)
-    mutations[SET_ASSETS_FINDED](state, [exampleAsset])
-    expect(state.assetsFinded).toHaveLength(1)
+  it('set assets "state.assetsFound" with [exampleAsset]', () => {
+    expect(state.assetsFound).toHaveLength(0)
+    mutations[SET_ASSETS_FOUND](state, [exampleAsset])
+    expect(state.assetsFound).toHaveLength(1)
   })
   it('set assetsFavorite "state.assetsFavorite" with [exampleAsset]', () => {
     expect(state.assetsFavorite).toHaveLength(0)
@@ -84,12 +84,12 @@ describe('Mutations Vuex', () => {
     mutations[RESET_ASSETS](state)
     expect(state.assets).toHaveLength(0)
   })
-  it('reset assets "state.assetsFinded"', () => {
-    expect(state.assetsFinded).toHaveLength(0)
-    mutations[SET_ASSETS_FINDED](state, [exampleAsset])
-    expect(state.assetsFinded).toHaveLength(1)
-    mutations[RESET_ASSETS_FINDED](state)
-    expect(state.assetsFinded).toHaveLength(0)
+  it('reset assets "state.assetsFound"', () => {
+    expect(state.assetsFound).toHaveLength(0)
+    mutations[SET_ASSETS_FOUND](state, [exampleAsset])
+    expect(state.assetsFound).toHaveLength(1)
+    mutations[RESET_ASSETS_FOUND](state)
+    expect(state.assetsFound).toHaveLength(0)
   })
   it('set conversionEuroToUsd "state.conversionEuroToUsd" with 1', () => {
     expect(state.conversionEuroToUsd).toEqual(0.85)

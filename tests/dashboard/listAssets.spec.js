@@ -19,7 +19,7 @@ describe('ListAssets.vue', () => {
       actionGetAssets: jest.fn()
     }
     getters = {
-      getAssetsFinded: jest.fn()
+      getAssetsFound: jest.fn()
     }
     store = new Vuex.Store({
       actions,
