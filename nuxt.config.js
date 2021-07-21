@@ -1,14 +1,14 @@
 export default {
   // Global page headers
   head: {
-    title: 'CryptoNine',
+    title: 'CryptoStatus',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'CryptoNine - List cryptocurrencies and view details' },
+      { hid: 'description', name: 'description', content: 'CryptoStatus - List cryptocurrencies and view details' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
@@ -45,7 +45,7 @@ export default {
   // Styling for loading app
   loadingIndicator: {
     name: 'cube-grid',
-    color: '#2d68ed',
+    color: '#3a5edd',
     background: 'white'
   }
 }

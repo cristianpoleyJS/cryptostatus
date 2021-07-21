@@ -19,7 +19,7 @@ export default {
   },
   head () {
     return {
-      title: 'CryptoNine - Details asset'
+      title: 'CryptoStatus - Details asset'
     }
   },
   methods: {

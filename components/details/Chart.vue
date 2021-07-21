@@ -30,18 +30,18 @@ export default {
         textColor: '#D9D9D9'
       },
       watermark: {
-        color: '#2d68ed'
+        color: '#3a5edd'
       },
       crosshair: {
         vertLine: {
-          color: '#2d68ed',
+          color: '#3a5edd',
           width: 0.5,
           style: 1,
           visible: true,
           labelVisible: false
         },
         horzLine: {
-          color: '#2d68ed',
+          color: '#3a5edd',
           width: 0.5,
           style: 0,
           visible: true,
@@ -59,9 +59,9 @@ export default {
       }
     }
     const seriesOptions = {
-      topColor: '#2d68ed',
+      topColor: '#3a5edd',
       bottomColor: 'rgb(32 100 226 / 4%)',
-      lineColor: '#2d68ed'
+      lineColor: '#3a5edd'
     }
     return {
       history: [],

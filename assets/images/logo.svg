@@ -1,0 +1,21 @@
+<svg id="Layer_3" height="512" viewBox="0 0 64 64" width="512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 3">
+    <circle cx="26" cy="26" fill="#225980" r="24" />
+    <circle cx="26" cy="26" fill="#419bd7" r="20.939" />
+    <circle cx="26" cy="26" fill="#26669e" r="20" />
+    <path d="m12.061 37.939a25.893 25.893 0 0 0 1.452 8.56 24 24 0 0 0 32.919-33.09 25.938 25.938 0 0 0 -34.371 24.53z" fill="#18435e" />
+    <g fill="#7fcdf2">
+        <path d="m12 25h7v2h-7z" />
+        <path d="m22 23h-5a1 1 0 0 1 -1-1v-4h2v3h4z" />
+        <path d="m25 13h2v7h-2z" />
+    </g>
+    <circle cx="12" cy="25.939" fill="#3a5edd" r="2" />
+    <circle cx="26" cy="11.939" fill="#3a5edd" r="2" />
+    <circle cx="17" cy="16.939" fill="#3a5edd" r="2" />
+    <path d="m19 25h-3.478q-.562.975-1.042 2h4.52z" fill="#4aaee3" />
+    <path d="m22 23v-2h-3.635q-.816.944-1.539 1.965a.925.925 0 0 0 .174.035z" fill="#4aaee3" />
+    <path d="m27 20v-5.553q-1.026.482-2 1.049v4.504z" fill="#4aaee3" />
+    <circle cx="38" cy="38" fill="#3a5edd" r="24" />
+    <circle cx="38" cy="38" fill="#304799" r="20.939" />
+    <circle cx="38" cy="38" fill="#3a5edd" r="20" />
+    <path d="m46 36.182v-10.182l-7-4-12 5v22l12 5 11-5v-11zm0 9.818-7 3-8-3v-16l8-3 3 2v5.364l-3-1.364-2 3v7l7-4 2 1z" fill="#fff" />
+</svg>
