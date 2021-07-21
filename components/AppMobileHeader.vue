@@ -46,9 +46,9 @@
 
     .app-header-logo i {
       background-image: var(--bg-image-logo);
-      width: 56px;
       vertical-align: middle;
-      height: 26px;
+      width: 44px;
+      height: 44px;
     }
 
 </style>
