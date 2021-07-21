@@ -1,10 +1,9 @@
 <template>
   <section class="app-sidebar">
-    <span class="app-sidebar-logo display-flex align-items-center">
-      <NuxtLink to="/" class="cursor-pointer w-full">
-        <i class="display-block bg-size-cover" />
-      </NuxtLink>
-    </span>
+    <NuxtLink to="/" class="cursor-pointer w-full app-sidebar-logo display-flex align-items-center align-items-center">
+      <i class="display-inline-block bg-size-cover" />
+      <span>CryptoStatus</span>
+    </NuxtLink>
 
     <nav>
       <span class="text-xs">MAIN MENU</span>
@@ -38,10 +37,16 @@
   padding-left: 2rem;
 }
 
+.app-sidebar-logo span {
+  font-size: 28px;
+  font-weight: var(--font-weight-medium);
+}
+
 .app-sidebar-logo i {
   background-image: var(--bg-image-logo);
-  width: 200px;
-  height: 26px;
+  width: 44px;
+  height: 44px;
+  margin-right: 12px;
 }
 
 nav {
@@ -76,9 +81,8 @@ nav a > span {
   .app-sidebar-logo {
     padding-left: 8px;
   }
-  .app-sidebar-logo i {
-    height: 22px;
-    width: 48px;
+  .app-sidebar-logo span {
+    display: none;
   }
   nav > span,
   nav a > span {

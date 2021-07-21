@@ -15,7 +15,7 @@
     --font-weight-medium: 500;
     --base-text-font-size: 1rem;
 
-    --second-text-color: #2d68ed;
+    --second-text-color: #3a5edd;
     --third-text-color: #96a0b4;
     --white: #fff;
     --color-negative-change: #ea3943;
@@ -31,6 +31,8 @@
     --border-radius-100-percent: 100%;
 
     --grid-template-columns-list: 5fr 45fr 20fr 20fr 10fr;
+
+    --bg-image-logo: url("../../assets/images/logo.svg");
 }
 
 body.light {
@@ -49,7 +51,6 @@ body.light {
     --bg-tabs-items: #dfdfe0;
     --bg-header-actions: #f6f6f6;
 
-    --bg-image-logo: url("../../assets/images/logo-light.svg");
     --bg-image-avatar: url("../../assets/images/avatar-light.svg");
     --bg-ico-action-favorite: url("../../assets/images/ico-favorite-light.svg");
     --bg-ico-theme: url('../../assets/images/ico-theme-dark.svg');
@@ -75,7 +76,6 @@ body.dark {
     --bg-tabs-items:#161924;
     --bg-header-actions: #323546;
 
-    --bg-image-logo: url("../../assets/images/logo-dark.svg");
     --bg-image-avatar: url("../../assets/images/avatar-dark.svg");
     --bg-ico-action-favorite: url("../../assets/images/ico-favorite-dark.svg");
     --bg-ico-theme: url('../../assets/images/ico-theme-light.svg');
@@ -83,14 +83,6 @@ body.dark {
 
     --border-general-color: #20232d;
     --border-input-search: rgb(36 41 52);
-}
-
-@media (max-width: 1024px) {
-    
-    body.dark,
-    body.light {
-        --bg-image-logo: url("../../assets/images/mobile-logo.svg");
-    }
 }
 
 * {

@@ -24,7 +24,7 @@ export default {
   },
   head () {
     return {
-      title: 'CryptoNine - Favorites'
+      title: 'CryptoStatus - Favorites'
     }
   },
   methods: {
