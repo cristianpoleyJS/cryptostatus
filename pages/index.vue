@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { RESET_ASSETS, RESET_ASSETS_FINDED } from '@/store'
+import { RESET_ASSETS, RESET_ASSETS_FOUND } from '@/store'
 export default {
   layout: ({ isMobile }) => isMobile ? 'mobile' : 'default',
   data () {
@@ -29,7 +29,7 @@ export default {
   },
   beforeDestroy () {
     this.$store.commit(RESET_ASSETS)
-    this.$store.commit(RESET_ASSETS_FINDED)
+    this.$store.commit(RESET_ASSETS_FOUND)
   },
   methods: {
 
@@ -40,7 +40,7 @@ export default {
     async refreshListAssets (obj) {
       this.loading = true
       obj.searchingAssets
-        ? this.$store.commit(RESET_ASSETS_FINDED)
+        ? this.$store.commit(RESET_ASSETS_FOUND)
         : this.$store.commit(RESET_ASSETS)
       this.offset = 0
       await this.$store.dispatch('actionGetAssets', { limit: 20, offset: 0, text: obj.inputValue })

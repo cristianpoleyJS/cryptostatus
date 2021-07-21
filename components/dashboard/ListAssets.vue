@@ -16,7 +16,7 @@
       <span class="text-align-center">Action</span>
     </div>
     <div class="wrapper-list">
-      <template v-if="!loading && !loadingFinded">
+      <template v-if="!loading && !loadingFound">
         <template v-if="assetsFiltered.length">
           <Asset
             v-for="asset in assetsFiltered"
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { RESET_ASSETS_FINDED } from '@/store'
+import { RESET_ASSETS_FOUND } from '@/store'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -63,7 +63,7 @@ export default {
   data () {
     return {
       inputSearch: '',
-      loadingFinded: false,
+      loadingFound: false,
       timeout: ''
     }
   },
@@ -77,26 +77,26 @@ export default {
         })
       }
       return this.inputSearch.length > 1
-        ? this.assetsFinded
+        ? this.assetsFound
         : this.assets
     },
 
     ...mapGetters({
-      assetsFinded: 'getAssetsFinded'
+      assetsFound: 'getAssetsFound'
     })
   },
   watch: {
     inputSearch (newVal) {
       if (!this.inFavoritesPage) {
-        if (newVal.length <= 1 && this.assetsFinded.length) {
-          this.$store.commit(RESET_ASSETS_FINDED)
+        if (newVal.length <= 1 && this.assetsFound.length) {
+          this.$store.commit(RESET_ASSETS_FOUND)
         } else {
           clearTimeout(this.timeout)
-          this.loadingFinded = true
+          this.loadingFound = true
 
           this.timeout = setTimeout(() => {
             this.$store.dispatch('actionGetAssets', { limit: 20, offset: 0, text: newVal }).then(() => {
-              this.loadingFinded = false
+              this.loadingFound = false
             })
             clearTimeout(this.timeout)
           }, 500)

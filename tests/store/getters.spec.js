@@ -9,7 +9,7 @@ import {
 describe('Getters Vuex', () => {
   const state = {
     assets: [],
-    assetsFinded: [],
+    assetsFound: [],
     assetsFavorite: [],
     assetSelected: {},
     history: [],
@@ -20,8 +20,8 @@ describe('Getters Vuex', () => {
   it('"getAssets" returns array empty', () => {
     expect(getters.getAssets(state)).toHaveLength(0)
   })
-  it('"getAssetsFinded" returns array empty', () => {
-    expect(getters.getAssetsFinded(state)).toHaveLength(0)
+  it('"getAssetsFound" returns array empty', () => {
+    expect(getters.getAssetsFound(state)).toHaveLength(0)
   })
   it('"getAssetsFavorites" returns array empty', () => {
     expect(getters.getAssetsFavorites(state)).toHaveLength(0)
