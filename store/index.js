@@ -97,7 +97,7 @@ export const actions = {
 
   actionUncheckFavorite ({ commit }, assetClicked) {
     commit(UNCHECK_FAVORITE, assetClicked)
-    const currentObjectFavorites = JSON.parse(localStorage.getItem('cryptoNineFavorites'))
+    const currentObjectFavorites = JSON.parse(localStorage.getItem('cryptoNineFavorites')) || {}
     const id = assetClicked.id
     delete currentObjectFavorites[id]
     localStorage.setItem('cryptoNineFavorites', JSON.stringify(currentObjectFavorites))
